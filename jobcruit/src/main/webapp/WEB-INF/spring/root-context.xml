@@ -11,8 +11,8 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
         <property name="url" value="jdbc:log4jdbc:mysql://192.168.0.108:3306/jobcruit?useSSL=false" />
-        <property name="username" value="wipy" />
-        <property name="password" value="java97" />
+        <property name="username" value="아이디" />
+        <property name="password" value="비번" />
     </bean>
      
      <!-- 데이터 리턴타입 -->
