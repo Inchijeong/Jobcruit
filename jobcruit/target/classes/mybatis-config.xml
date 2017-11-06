@@ -6,5 +6,6 @@
 <configuration>
   <typeAliases>
     <package name="com.jobcruit.domain"/>
+    <package name="com.jobcruit.dto"/>
   </typeAliases>
 </configuration>
