@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+#content {height:100%}
+.outer, .inner {height:100%}
+ul.no-margin {margin:0px}
