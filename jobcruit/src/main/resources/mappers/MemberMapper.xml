@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobcruit.mappers.MemberMapper">
+	<resultMap type="Member" id="memberMap">
+		<result column="mno" property="mno"/>
+		<result column="email" property="email"/>
+		<result column="mname" property="mname"/>
+		<result column="phone_no" property="phoneNo"/>
+		<result column="password" property="password"/>
+		<result column="category" property="category"/>
+	</resultMap>
+
+  <insert id="create">
+    insert into tb_member (email, mname, phone_no, password, category)
+    values (#{email}, #{mname}, #{phoneNo}, #{password}, #{category})
+  </insert>
+  
+  <select id="read" resultType="Member">
+  	select * 
+  	  from tb_member
+  	 where mno = #{mno}
+  </select>
+  
+  <select id="update">
+  	update tb_member
+  	   set mname = #{mname}, phone_no = #{phoneNo}, password = #{password}   
+  	 where mno = #{mno}
+  </select>
+  
+  <delete id="delete">
+    delete from tb_member
+     where mno = #{key}
+  </delete>
+</mapper>

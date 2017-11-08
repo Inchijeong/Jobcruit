@@ -28,4 +28,25 @@
 	
 	<context:component-scan base-package="com.jobcruit.web" />
 	
+	<beans:bean id="loginAfter" class="com.jobcruit.interceptor.LoginInterceptor">
+	</beans:bean>
+	
+	<beans:bean id="CheckInterceptor" class="com.jobcruit.interceptor.CheckInterceptor">
+	</beans:bean>
+	
+	<interceptors>
+	
+		<interceptor>
+			<mapping path="/job/member/loginPost"/>
+			<beans:ref bean="loginAfter"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/job/member/main"/>
+			<beans:ref bean="CheckInterceptor"/>
+		</interceptor>
+		
+		
+	</interceptors>
+	
 </beans:beans>
