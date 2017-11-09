@@ -54,3 +54,9 @@
     <link rel="stylesheet" href="/resources/assets/css/style-switcher.css">
     <link rel="stylesheet/less" type="text/css" href="/resources/assets/less/theme.less">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
+    
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.min.css">
+    
+    <!-- 공통CSS -->
+		<link rel="stylesheet" href="/resources/css/common.css">

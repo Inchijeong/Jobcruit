@@ -21,3 +21,7 @@
  <script src="/resources/assets/js/app.js"></script>
 
  <script src="/resources/assets/js/style-switcher.js"></script>
+ <!-- sweetalert2 -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.min.js"></script>
+ <!-- 공통 JS -->
+ <script src="/resources/js/common.js"></script>

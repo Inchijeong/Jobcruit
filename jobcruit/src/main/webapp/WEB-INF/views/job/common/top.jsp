@@ -59,10 +59,10 @@
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                             <!-- .nav -->
                             <ul class="nav navbar-nav">
-                                <li><a href="#">채용정보</a></li>
-                                <li><a href="#">기업정보</a></li>
+                                <li><a href="/job/recruit/list">채용정보</a></li>
+                                <li><a href="/job/company/list">기업정보</a></li>
                                 <li><a href="/job/free/list">자유게시판</a></li>
-                                <li><a href="#">MyPage</a></li>
+                                <li><a href="/job/member/mypage">MyPage</a></li>
                             </ul>
                             <!-- /.nav -->
                         </div>
