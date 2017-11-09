@@ -19,7 +19,7 @@ public class CheckInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		Object value = request.getSession().getAttribute("login");
+		Object value = request.getSession().getAttribute("mnoSession");
 		
 		if(value != null) {
 			return true;
@@ -27,10 +27,10 @@ public class CheckInterceptor extends HandlerInterceptorAdapter {
 		
 		if(value == null) {
 		
-			Cookie loginCookie = WebUtils.getCookie(request, "login");
+			Cookie loginCookie = WebUtils.getCookie(request, "mnoCookie");
 			
 			if(loginCookie != null) {
-				request.getSession().setAttribute("login", loginCookie.getValue());
+				request.getSession().setAttribute("mnoSession", loginCookie.getValue());
 				return true;
 			}
 			

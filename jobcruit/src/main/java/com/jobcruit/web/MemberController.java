@@ -1,13 +1,20 @@
 package com.jobcruit.web;
 
+import java.io.IOException;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.WebUtils;
 
 import com.jobcruit.domain.Member;
 import com.jobcruit.service.MemberService;
@@ -22,6 +29,45 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 	
+	@PostMapping("/getName")
+	@ResponseBody
+	public Member getNamePost(Integer mno) {
+		return service.get(mno);
+	}
+	
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public void logoutGet(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+		Object obj = session.getAttribute("mnoSession");
+//		log.info("갖고 있던 세션: " + obj.toString());
+		if (obj != null) {
+			session.removeAttribute("mnoSession");
+			session.invalidate();
+			
+			Cookie loginCookie = WebUtils.getCookie(request, "mnoCookie");
+			
+//			log.info("갖고 있던 쿠키: " + loginCookie.getValue());
+			
+			if (loginCookie != null) {
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+//				log.info("삭제 후 쿠키: " + loginCookie.getValue());
+				response.addCookie(loginCookie);
+			}
+		}
+		
+		response.sendRedirect("/job/member/myPage");
+//		log.info("삭제 후 세션: " + session.getAttribute("mnoSession"));
+		
+	}
+	
+	// 마이 페이지로 이동
+	@GetMapping("/myPage")
+	public void myPageGet() {
+		
+	}
+	
 	// 아이티 중복 체크
 	@PostMapping("/checkID")
 	@ResponseBody
@@ -33,6 +79,12 @@ public class MemberController {
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/checkPassword")
 	public void checkPasswordGet() {
+		
+	}
+	
+	// 비밀번호 확인 페이지로 이동
+	@PostMapping("/checkPassword")
+	public void checkPasswordPost() {
 		
 	}
 	
@@ -71,17 +123,28 @@ public class MemberController {
 	@GetMapping("/login")
 	public void loginGet() {
 		
-	} 
+	}
 	
 	// 로그인
 	@PostMapping("/loginPost")
-	public String loginPost(String email, String password, @RequestParam Boolean rememberMe, Model model) {
-		log.info(""+email);
-		log.info(""+rememberMe);
-		model.addAttribute("email", email);
-		model.addAttribute("remember", rememberMe);
-		return "redirect:/job/member/main";
+	public String loginPost(Member vo, Boolean rememberId, Boolean rememberMe, Model model) {
+//		log.info(""+ rememberId);
+//		log.info(""+ rememberMe);
+//		log.info("사용자 :" + service.getLogin(vo));
+		
+		model.addAttribute("mno", service.getLogin(vo));
+		model.addAttribute("rememberId", rememberId);
+		model.addAttribute("rememberMe", rememberMe);
+		return "redirect:/job/member/myPage";
 	}
+	
+	// 로그인 아이디, 비밀번호 체크
+	@PostMapping("/loginCheck")
+	@ResponseBody
+	public Integer loginCheck(Member vo) {
+		return service.getLogin(vo);
+	};
+	
 	
 	// 회원가입 페이지로 이동
 	@GetMapping("/signUp")
@@ -93,13 +156,7 @@ public class MemberController {
 	@PostMapping("/signUpPost")
 	public String singUpPost(Member vo) {
 		service.register(vo);
-		return "redirect:/job/member/main";
-	}
-	
-	// 메인
-	@GetMapping("/main")
-	public void mainGet() {
-		
+		return "redirect:/job/member/myPage";
 	}
 	
 }

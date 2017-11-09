@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <%@include file="../common/headerRes.jsp"%>
@@ -16,9 +16,9 @@
 				<div class="tab-content">
 
 					<!-- 비밀번호 확인 -->
-					<div id="modMember">
+					<div id="checkPassword">
 						<h3>비밀번호 확인</h3><br>
-						<form action="/job/member/modMember" method="post">
+						<form action="/job/member/checkPassword" method="post">
 						  <label>비밀번호</label>
 							<input type="password" placeholder="비밀번호" class="form-control" name="password" value="1234"><br>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">확인</button>

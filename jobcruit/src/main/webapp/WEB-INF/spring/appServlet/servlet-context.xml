@@ -42,7 +42,7 @@
 		</interceptor>
 		
 		<interceptor>
-			<mapping path="/job/member/main"/>
+			<mapping path="/job/member/myPage"/>
 			<beans:ref bean="CheckInterceptor"/>
 		</interceptor>
 		

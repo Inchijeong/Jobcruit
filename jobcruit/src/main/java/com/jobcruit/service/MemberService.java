@@ -9,4 +9,6 @@ public interface MemberService {
 	public void remove(Integer key);
 	public Integer recover(Member vo);
 	public Integer checkEmail(String email);
+//	public String login(Member vo);
+	public Integer getLogin(Member vo);
 }

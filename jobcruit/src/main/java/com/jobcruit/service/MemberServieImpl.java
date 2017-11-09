@@ -13,6 +13,16 @@ public class MemberServieImpl implements MemberService {
 	MemberMapper mapper;
 
 	@Override
+	public Integer getLogin(Member vo) {
+		return mapper.readLogin(vo);
+	}
+
+//	@Override
+//	public String login(Member vo) {
+//		return mapper.readLogin(vo);
+//	}
+
+	@Override
 	public Integer checkEmail(String email) {
 		return mapper.checkEmail(email);
 	}

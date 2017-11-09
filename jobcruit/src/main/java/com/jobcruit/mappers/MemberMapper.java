@@ -13,4 +13,7 @@ public interface MemberMapper extends CRUDMapper<Member, Integer> {
 	@Select("select count(email) from tb_member where email = #{email}")
 	public Integer checkEmail(String email);
 	
+	@Select("select mno from tb_member where email = #{email} and password = #{password}")
+	public Integer readLogin(Member vo);
+	
 }

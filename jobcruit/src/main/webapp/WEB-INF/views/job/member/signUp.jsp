@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <%@include file="../common/headerRes.jsp"%>
@@ -30,7 +30,7 @@
 							<label>휴대폰 번호</label>
 							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" value="01022223333">
 							<div>
-								<label> <input type="radio" name="category" value="0">
+								<label> <input type="radio" name="category" value="0" checked="checked">
 									개인회원
 								</label> <label> <input type="radio" name="category" value="1">
 									기업회원
