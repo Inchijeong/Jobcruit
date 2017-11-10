@@ -15,6 +15,13 @@ public interface RecruitService {
 	
 	public void modify(Recruit recruit);
 	
+	
+	/* 관심 채용 등록 및 삭제 */
+	public void registerHeart(Recruit recruit);
+	public void deleteHeart(Recruit recruit);
+	
+	
+	
 	public void remove(Integer rno);
 	
 	public List<Recruit> getList(Criteria cri);

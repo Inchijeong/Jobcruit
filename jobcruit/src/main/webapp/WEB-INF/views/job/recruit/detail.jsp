@@ -43,8 +43,8 @@
                                             <input type="text" name="eduLevel" class="form-control" value='${recruit.eduLevel}' readonly='readonly'>
                                         </div>
                                         <div class="form-group">
-                                        	<button type="button" class="btn btn-default" aria-label="Left Align" id="interest">
-											  이 기업 좋아요<span class="glyphicon glyphicon-heart-empty" aria-hidden="true" id="heart" ></span>
+                                        	<button type="button" class="btn btn-default " aria-label="Left Align" id="interest">
+											  이 기업 좋아요<span class="" aria-hidden="true" id="heart" style="color: red"></span>
 											</button>
                                         </div>
                                             <button type="button" class="btn btn-default modBtn">Modify</button>
@@ -53,6 +53,7 @@
 											<form id='actionForm' action='/job/recruit/list' method='get'>
 												<input type="hidden" name='page' value='${cri.page}'>
 												<input type="hidden" name='size' value='${cri.size}'>
+												<input type='hidden' name='rno' value='${recruit.rno}'>
 												<input type='hidden' name='rno' value='${recruit.rno}'>
 											</form>
 											
@@ -82,12 +83,36 @@
 			var heart = $("#heart");
 			
 			$("#interest").click(function(){
+				 $("#heart").toggleClass("glyphicon glyphicon-heart-empty");
+				 
+				 if($("#heart").attr("class") != ""){
+					
+						$.ajax({
+							url: "/job/recruit/heart",
+							type: "get",
+				//			data: "msg=" + $("#msg").val()
+							data:{rno:'${recruit.rno}'}
+						})
+						.done(function(data){
+							alert("이 기업의 공고를 관심채용에 등록하였습니다");	
+						});
+				 }else{
+					 $.ajax({
+							url: "/job/recruit/heartCancel",
+							type: "get",
+				//			data: "msg=" + $("#msg").val()
+							data:{rno:'${recruit.rno}'}
+						})
+						.done(function(data){
+							alert("이 기업의 공고를 관심채용에서 삭제하였습니다");	
+						});
+				 };
+				 
 				
-				}
+			});
 				
 			});
 			
-		});
 	</script>
 	</body>
 </html>

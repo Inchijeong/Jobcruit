@@ -81,7 +81,7 @@
 				<input type="hidden" name='page' value='${criteria.page}'>
 				<input type="hidden" name='size' value='${criteria.size}'>
 				<input type="hidden" name="rno" value=''>
-				<input type='hidden' name='searchKeyword'>
+				<input type='hidden' name='keyword'>
 			</form>
 			
 			
@@ -125,7 +125,7 @@
      	  actionForm.find("input[name='page']").val(1);
      	  var keyword = $("#searchval").val();
      	  console.log("key : " + keyword);
-     	 actionForm.find("input[name='searchKeyword']").val(keyword);
+     	 actionForm.find("input[name='keyword']").val(keyword);
      	  actionForm.submit();
         });
        

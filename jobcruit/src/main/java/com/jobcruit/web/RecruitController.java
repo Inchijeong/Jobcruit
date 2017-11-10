@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,6 +45,19 @@ public class RecruitController {
 		
 	}
 	
+	@ResponseBody
+	@GetMapping("/recruit/heart")//model -> request setAttribute
+	public void registerHeart(Recruit recruit) {
+		log.info("11111111111"+recruit.getRno());
+		service.registerHeart(recruit);
+	}
+	
+	@ResponseBody
+	@GetMapping("/recruit/heartCancel")//model -> request setAttribute
+	public void deleteHeart(Recruit recruit) {
+		service.deleteHeart(recruit);
+	}
+	
 	
 	@GetMapping("/recruit/detail")
 	public void detail(@RequestParam(name="rno")int rno, @ModelAttribute("cri")Criteria cri, Model model) {
@@ -59,9 +73,9 @@ public class RecruitController {
 	
 	@GetMapping("/recruit/searchlist")
 	public void searchlist(SearchCriteria scri, Model model, Criteria cri) {
-		log.info("keyword : "+scri.getSearchKeyword());
-		scri.setSearchKeyword(scri.getSearchKeyword().replaceAll(" ", "','"));
-		log.info("ddddddddddddd"+ scri.getSearchKeyword());
+		log.info("keyword : "+scri.getKeyword());
+		scri.setKeyword(scri.getKeyword().replaceAll(" ", "','"));
+		log.info("ddddddddddddd"+ scri.getKeyword());
 		model.addAttribute("cri", cri);
 		model.addAttribute("scri", scri);
 		model.addAttribute("list", service.searchList(scri));

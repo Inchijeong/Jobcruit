@@ -90,15 +90,27 @@ public class RecruitServiceImpl implements RecruitService {
 	@Override
 	public String getKeyword(SearchCriteria scri) {
 		// TODO Auto-generated method stub
-		return scri.getSearchKeyword();
+		return scri.getKeyword();
 	}
 
 	@Override
 	public List<Recruit> searchList(SearchCriteria scri) {
 		// TODO Auto-generated method stub
-		log.info("------------------aojdngoan111"+scri.getSearchKeyword());
+		log.info("------------------aojdngoan111"+scri.getKeyword());
 		
 		return mapper.searchList(scri);
+	}
+
+	@Override
+	public void registerHeart(Recruit recruit) {
+		mapper.registerHeart(recruit);
+		
+	}
+
+	@Override
+	public void deleteHeart(Recruit recruit) {
+		mapper.deleteHeart(recruit);
+		
 	}
 
 }
