@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
-#content {height:100%}
-.outer, .inner {height:100%}
-ul.no-margin {margin:0px}
+#content {height:100%;}
+.outer, .inner {height:100%;}
+ul.no-margin {margin:0px;}
+pre {min-height:100px;margin-top:10px;}
+.mr5 {margin-right: 5px;}
+.splitbar {margin:0px 5px;}

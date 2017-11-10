@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobcruit.mappers.FreeBoardMapper">
+	<resultMap type="FreeBoard" id="FreeBoardMap">
+		<result column="fno" property="fno" />
+		<result column="mno" property="mno" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="reg_date" property="regDate" />
+		<result column="modi_date" property="modiDate" />
+		<result column="read_count" property="readCount" />
+		<result column="comm_count" property="commCount" />
+		<result column="isattach" property="isAttach" />
+		<result column="mname" property="mname" />
+	</resultMap>
+	
+	<resultMap type="FreeAttach" id="FreeAttachMap">
+		<result column="free_ano" property="freeAno" />
+		<result column="fno" property="fno" />
+		<result column="file_path" property="filePath" />
+		<result column="file_name" property="fileName" />
+	</resultMap>
+	
+	<insert id="create">
+		insert into tb_freeboard (mno, title, content)
+		values (#{mno}, #{title}, #{content})
+	</insert>
+	
+	<update id="update">
+		update tb_freeboard
+		   set title = #{title}, content = #{content}, modi_date = #{modiDate}
+		 where fno = #{fno}
+	</update>
+	
+	<delete id="delete">
+		delete
+		  from tb_freeboard
+		 where fno = #{fno}
+	</delete>
+	
+	<select id="read" resultMap="FreeBoardMap">
+		select f.*, m.mname 
+  		from tb_freeboard as f
+  		left outer join tb_member as m
+   		  on f.mno = m.mno
+ 		 where f.fno = #{fno};
+	</select>
+
+	<!-- <select id="getList" parameterType="Criteria" resultMap="FreeBoardMap">
+		select f.*, m.mname
+  		  from tb_freeboard as f
+  		  left outer join tb_member as m
+		    on f.mno = m.mno
+ 		 order by f.fno desc limit #{skip}, #{size}
+	</select> -->
+	<select id="getListCount" parameterType="SearchCriteria" resultType="int">
+		select count(fno) 
+		  from tb_freeboard as f
+  		left outer join tb_member as m
+		    on f.mno = m.mno
+		<if test="searchType != ''">
+			<choose>
+				<when test="searchType == 'all'">
+			 		where f.title like '%${keyword}%' or f.content like '%${keyword}%'
+			 	</when>
+			 	<when test="searchType == 'writer'">
+			 		where m.mname like '%${keyword}%'
+			 	</when>
+			 	<otherwise>
+			 		where f.title like '%${keyword}%'
+			 	</otherwise>
+			</choose>
+		</if>	 
+	</select>
+	
+	<select id="getList" parameterType="SearchCriteria" resultMap="FreeBoardMap">
+		select f.*, m.mname
+  		  from tb_freeboard as f
+  		  left outer join tb_member as m
+		    on f.mno = m.mno
+		<if test="keyword != ''">
+			<choose>
+				<when test="searchType == 'all'">
+			 		where f.title like '%${keyword}%' or f.content like '%${keyword}%'
+			 	</when>
+			 	<when test="searchType == 'writer'">
+			 		where m.mname like '%${keyword}%'
+			 	</when>
+			 	<otherwise>
+			 		where f.title like '%${keyword}%'
+			 	</otherwise>
+			</choose>
+		</if>	 
+ 		 order by f.fno desc limit #{skip}, #{size}
+	</select>
+	
+	<select id="getSearchList" parameterType="SearchCriteria" resultMap="FreeBoardMap">
+		select f.*, m.mname
+  		from tb_freeboard as f
+  		left outer join tb_member as m
+		    on f.mno = m.mno
+		<choose>
+			<when test="searchType == 'all'">
+		 		where f.title like '%${keyword}%' or f.content like '%${keyword}%'
+		 	</when>
+		 	<when test="searchType == 'writer'">
+		 		where m.mname like '%${keyword}%'
+		 	</when>
+		 	<otherwise>
+		 		where f.title like '%${keyword}%'
+		 	</otherwise>
+		</choose>
+	</select>
+</mapper>
