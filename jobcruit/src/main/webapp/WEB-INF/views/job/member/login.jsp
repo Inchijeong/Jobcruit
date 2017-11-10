@@ -72,9 +72,9 @@
 			var $result = $("#result");
 			var $loginForm = $("#loginForm");
 			
-			$loginBtn.on("click", function(e){
+			 $loginBtn.on("click", function(e){
 				e.preventDefault();
-				$.ajax({
+				 $.ajax({
 					url: "/job/member/loginCheck",
 					data: {
 						"email": $("#email").val(),
@@ -83,13 +83,14 @@
 					dataType: "text",
 					type: "post"
 				}).done(function(data){
+// 					console.log("data:"+data)
 					if(data){
 						$loginForm.submit();
 					} else {
 						$result.html("<p>아이디 또는 비밀번호를 다시 확인하세요.</p>")
 					}
-				});
-			});
+				}); 
+			}); 
 			
 		});
 	</script>		

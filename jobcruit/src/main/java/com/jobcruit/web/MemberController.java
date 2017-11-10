@@ -35,39 +35,6 @@ public class MemberController {
 		return service.get(mno);
 	}
 	
-	
-	// 로그아웃
-	@GetMapping("/logout")
-	public void logoutGet(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
-		Object obj = session.getAttribute("mnoSession");
-//		log.info("갖고 있던 세션: " + obj.toString());
-		if (obj != null) {
-			session.removeAttribute("mnoSession");
-			session.invalidate();
-			
-			Cookie loginCookie = WebUtils.getCookie(request, "mnoCookie");
-			
-//			log.info("갖고 있던 쿠키: " + loginCookie.getValue());
-			
-			if (loginCookie != null) {
-				loginCookie.setPath("/");
-				loginCookie.setMaxAge(0);
-//				log.info("삭제 후 쿠키: " + loginCookie.getValue());
-				response.addCookie(loginCookie);
-			}
-		}
-		
-		response.sendRedirect("/job/member/myPage");
-//		log.info("삭제 후 세션: " + session.getAttribute("mnoSession"));
-		
-	}
-	
-	// 마이 페이지로 이동
-	@GetMapping("/myPage")
-	public void myPageGet() {
-		
-	}
-	
 	// 아이티 중복 체크
 	@PostMapping("/checkID")
 	@ResponseBody
@@ -82,7 +49,7 @@ public class MemberController {
 		
 	}
 	
-	// 비밀번호 확인 페이지로 이동
+	// 비밀번호 확인
 	@PostMapping("/checkPassword")
 	public void checkPasswordPost() {
 		
@@ -91,6 +58,12 @@ public class MemberController {
 	// 비밀번호 변경 페이지로 이동
 	@GetMapping("/editPassword")
 	public void editPasswordGet() {
+		
+	}
+	
+	// 비밀번호 변경 페이지로 이동
+	@PostMapping("/editPassword")
+	public void editPasswordPost() {
 		
 	}
 	
@@ -127,7 +100,7 @@ public class MemberController {
 	
 	// 로그인
 	@PostMapping("/loginPost")
-	public String loginPost(Member vo, Boolean rememberId, Boolean rememberMe, Model model) {
+	public void loginPost(Member vo, Boolean rememberId, Boolean rememberMe, Model model) {
 //		log.info(""+ rememberId);
 //		log.info(""+ rememberMe);
 //		log.info("사용자 :" + service.getLogin(vo));
@@ -135,7 +108,8 @@ public class MemberController {
 		model.addAttribute("mno", service.getLogin(vo));
 		model.addAttribute("rememberId", rememberId);
 		model.addAttribute("rememberMe", rememberMe);
-		return "redirect:/job/member/myPage";
+		
+//		log.info("LOGIN POST.............FINISHED");
 	}
 	
 	// 로그인 아이디, 비밀번호 체크
@@ -145,6 +119,31 @@ public class MemberController {
 		return service.getLogin(vo);
 	};
 	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logoutGet(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+		Object obj = session.getAttribute("login");
+//		log.info("갖고 있던 세션: " + obj.toString());
+		if (obj != null) {
+			session.removeAttribute("login");
+			session.invalidate();
+			
+			Cookie loginCookie = WebUtils.getCookie(request, "mnoCookie");
+			
+//			log.info("갖고 있던 쿠키: " + loginCookie.getValue());
+			
+			if (loginCookie != null) {
+				loginCookie.setPath("/job");
+				loginCookie.setMaxAge(0);
+//				log.info("삭제 후 쿠키: " + loginCookie.getValue());
+				response.addCookie(loginCookie);
+			}
+		}
+		
+//		log.info("삭제 후 세션: " + session.getAttribute("login"));
+		return "redirect:/job/common/main";
+		
+	}
 	
 	// 회원가입 페이지로 이동
 	@GetMapping("/signUp")
@@ -156,7 +155,7 @@ public class MemberController {
 	@PostMapping("/signUpPost")
 	public String singUpPost(Member vo) {
 		service.register(vo);
-		return "redirect:/job/member/myPage";
+		return "redirect:/job/common/main";
 	}
 	
 }

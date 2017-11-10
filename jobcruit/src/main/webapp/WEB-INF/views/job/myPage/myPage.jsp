@@ -7,9 +7,12 @@
 		
 		<style>
 			#content{
-				min-height: 50%;
-				min-width: 85%;
+/* 				min-height: 50%; */
+/* 				min-width: 85%; */
 				margin-bottom: 50px;
+			}
+			#wrap{
+				min-height: 80%;
 			}
 		</style>
 	</head>
@@ -31,18 +34,23 @@
                           </li>
 <!--                           <li class="nav-divider"></li> -->
                           <li class="">
-                            <a href="dashboard.html">
-                              <i class="glyphicon glyphicon-star"></i><span class="link-title">&nbsp;관심 채용 공고</span>
+                            <a href="">
+                              <i class="glyphicon glyphicon-star"></i><span class="link-title">&nbsp;관심 채용공고</span>
                             </a>
                           </li>
                           <li class="">
-                            <a href="dashboard.html">
+                            <a href="">
                               <i class="glyphicon glyphicon-paperclip"></i><span class="link-title">&nbsp;이력서 관리</span>
                             </a>
                           </li>
                           <li class="">
                             <a href="/job/member/checkPassword">
-                              <i class="glyphicon glyphicon-user"></i><span class="link-title">&nbsp;회원 정보 관리</span>
+                              <i class="glyphicon glyphicon-user"></i><span class="link-title">&nbsp;회원정보 관리</span>
+                            </a>
+                          </li>
+                          <li class="">
+                            <a href="">
+                              <i class="glyphicon glyphicon-user"></i><span class="link-title">&nbsp;기업 등록</span>
                             </a>
                           </li>
                                   
@@ -60,7 +68,7 @@
                         </div>
                     <!-- /#left -->
                     <div id="content">
-                    <div id="right" class="outer">
+                    <div class="outer">
                       <div class="inner bg-light lter">
                       	<p>wfefwfwfeew<br></p>
                       	<p>wfefwfwfeew<br></p>
@@ -72,10 +80,6 @@
                       </div>
                     </div>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
         <!-- /#wrap -->
 		<%@include file="../common/footer.jsp" %> 
 		<%@include file="../common/bodyRes.jsp" %> 

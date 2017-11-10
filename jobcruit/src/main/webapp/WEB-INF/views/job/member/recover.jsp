@@ -68,14 +68,14 @@
 					url: "/job/member/recover",
 					type: "POST",
 					dataType: "text"
-				}).done(function(result) {
-					console.log(result);
-					if(result == 1){
-						console.log("일치함")
-						location.href = "/job/member/editPassword";
-					}else{
-						console.log("일치정보");
+				}).done(function(data) {
+// 					console.log(data);
+					if(data == ""){
+// 						console.log("일치정보");
 						$("#result").html("<span>일치하는 회원정보가 없습니다.</span>");
+					}else{
+// 						console.log("일치함")
+						location.href = "/job/member/editPassword?mno="+ data;
 					}
 				});
 			});

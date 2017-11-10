@@ -17,11 +17,6 @@ public class MemberServieImpl implements MemberService {
 		return mapper.readLogin(vo);
 	}
 
-//	@Override
-//	public String login(Member vo) {
-//		return mapper.readLogin(vo);
-//	}
-
 	@Override
 	public Integer checkEmail(String email) {
 		return mapper.checkEmail(email);
@@ -29,7 +24,7 @@ public class MemberServieImpl implements MemberService {
 
 	@Override
 	public Integer recover(Member vo) {
-		return mapper.readPassword(vo);
+		return mapper.readMno(vo);
 	}
 
 	@Override
