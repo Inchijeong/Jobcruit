@@ -21,7 +21,7 @@
 <!-- 						<form action="/job/member/editInfo" method="post" id="checkPassForm"> -->
 						<form>
 						  <label>비밀번호</label>
-							<input type="password" placeholder="비밀번호" class="form-control" name="password" id="password" value="1234">
+							<input type="password" placeholder="비밀번호" class="form-control" name="password" id="password">
 							<input type="hidden" name="mno" value='${login}'>
 							<br>
 							<div id="result">

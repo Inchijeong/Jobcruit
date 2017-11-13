@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jobcruit.mappers.MyPageMapper">
+
+ 	<resultMap id="RecruitMap" type="Recruit"> 
+		<result column="rno" property="rno"/>
+		<result column="cid" property="cid"/>
+		<result column="title" property="title"/>
+		<result column="career" property="career"/>
+		<result column="edu_level" property="eduLevel"/> 
+		<result column="prefer" property="prefer"/>
+		<result column="hire_type" property="hireType"/> 
+		<result column="position" property="position"/> 
+		<result column="eligibility" property="eligibility"/> 
+		<result column="dowhat" property="dowhat"/> 
+		<result column="reg_date" property="regDate"/> 
+	</resultMap> 
+	
+	<select id="getFavList" resultMap="RecruitMap">
+		select fr.rno, fr.cid, fr.title, fr.career, fr.edu_level, fr.prefer, fr.eligibility, fr.dowhat, fr.hire_type, fr.position, fr.reg_date 
+		  from (select f.mno, r.* 
+		  				from tb_fav_recruit f
+						 inner join tb_recruit r
+		  				  on f.rno = r.rno
+						 where f.mno = #{mno}) fr;
+	</select>
+	
+</mapper>

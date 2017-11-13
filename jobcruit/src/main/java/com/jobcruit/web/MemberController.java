@@ -115,8 +115,10 @@ public class MemberController {
 //		log.info(""+ rememberId);
 //		log.info(""+ rememberMe);
 //		log.info("사용자 :" + service.getLogin(member));
+//		log.info("이메일 :" + member.getEmail());
 		
 		model.addAttribute("mno", service.getLogin(member));
+		model.addAttribute("email", member.getEmail());
 		model.addAttribute("rememberId", rememberId);
 		model.addAttribute("rememberMe", rememberMe);
 		

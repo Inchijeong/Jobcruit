@@ -43,26 +43,26 @@ public class CheckInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 	
-		log.info("체크 인터셉터 걸림");
+//		log.info("체크 인터셉터 걸림");
 		
 		Object value = request.getSession().getAttribute("login");
 		
 		if(value != null) {
-			log.info("세션에 있음");
+//			log.info("세션에 있음");
 			return true;
 		}
 		
 		if(value == null) {
 		
-			log.info("세션에 없음");
+//			log.info("세션에 없음");
 			Cookie loginCookie = WebUtils.getCookie(request, "mnoCookie");
 			
 			if(loginCookie != null) {
 				request.getSession().setAttribute("login", loginCookie.getValue());
-				log.info("세션 x 쿠키 o 로그인으로 가면안돼");
+//				log.info("세션 x 쿠키 o 로그인으로 가면안돼");
 				return true;
 			}
-			log.info("세션 쿠키 둘다 없음");
+//			log.info("세션 쿠키 둘다 없음");
 			
 		}
 		

@@ -21,9 +21,9 @@
 			  	<h3>로그인</h3><br>				
 						<form action="/job/member/loginPost" method="post" id="loginForm">
 						  <label>이메일</label>
-							<input type="email" placeholder="이메일" class="form-control" name="email" id="email" value="abc@naver.com">
+							<input type="email" placeholder="이메일" class="form-control" name="email" id="email">
 						  <label>비밀번호</label>
-						  <input type="password" placeholder="비밀번호" class="form-control" name="password" id="password" value="1234">
+						  <input type="password" placeholder="비밀번호" class="form-control" name="password" id="password">
 							<div class="checkbox">
 							<label>
 							<input type="checkbox" name="rememberId">
@@ -87,26 +87,33 @@
 			var $result = $("#result");
 			var $loginForm = $("#loginForm");
 			
-			 $loginBtn.on("click", function(e){
-				e.preventDefault();
-				 $.ajax({
-					url: "/job/member/loginCheck",
-					data: {
-						"email": $("#email").val(),
-						"password": $("#password").val()
-					},
-					dataType: "text",
-					type: "post"
-				}).done(function(data){
-// 					console.log("data:"+data)
-					if(data){
-						$loginForm.submit();
-					} else {
-						$result.html("<p>아이디 또는 비밀번호를 다시 확인하세요.</p>")
-					}
-				}); 
+			$loginBtn.on("click", function(e){
+			e.preventDefault();
+			 $.ajax({
+				url: "/job/member/loginCheck",
+				data: {
+					"email": $("#email").val(),
+					"password": $("#password").val()
+				},
+				dataType: "text",
+				type: "post"
+			}).done(function(data){
+// 				console.log("data:"+data)
+				if(data){
+					$loginForm.submit();
+				} else {
+					$result.html("<p>아이디 또는 비밀번호를 다시 확인하세요.</p>")
+				}
+			}); 
 			}); 
 			
+			var rememberId = '${cookie.rememberId.value}';
+			var $email = $("#email");
+			
+			if(rememberId){
+				$email.val(rememberId);
+			}
+			 
 		});
 	</script>		
 </body>
