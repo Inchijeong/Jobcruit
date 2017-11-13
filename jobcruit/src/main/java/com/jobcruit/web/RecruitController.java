@@ -34,7 +34,7 @@ import lombok.extern.java.Log;
 
 @Log
 @Controller
-@RequestMapping("/job/recruit")
+@RequestMapping("/job/recruit/*")
 public class RecruitController {
 	
 	@Autowired
@@ -42,33 +42,33 @@ public class RecruitController {
 	 
 	@GetMapping("/register")//model -> request setAttribute
 	public void registerGET(Criteria cri, Integer cid) {
-		
+	
 	}
 	
 	@ResponseBody
 	@GetMapping("/heart")//model -> request setAttribute
 	public void registerHeart(Recruit recruit) {
-		log.info("11111111111"+recruit.getRno());
 		service.registerHeart(recruit);
 	}
+	
 	@ResponseBody
 	@GetMapping("/heartCancel")//model -> request setAttribute
 	public void deleteHeart(Recruit recruit) {
 		service.deleteHeart(recruit);
 	}
 	
-	
+//	상세보기
 	@GetMapping("/detail")
-	public void detail(@RequestParam(name="rno")int rno, @ModelAttribute("cri")Criteria cri, Model model) {
+	public void detail(int rno, @ModelAttribute("cri")Criteria cri, Model model) {
 		model.addAttribute("recruit", service.get(rno));
 	}
-	
+
+//	리스트 뿌려주기.
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		model.addAttribute("list", service.getList(cri));
 		model.addAttribute("criteria", cri);
 		model.addAttribute("total", service.getListCount(cri));
-		log.info(""+cri);
 	}
 	
 	
@@ -89,7 +89,7 @@ public class RecruitController {
 	}
 	
 	
-	
+//	검색했을 때 검색어가 있는 리스트 뿌려주기 scri에 키워드 들어있고 나중에 Criteria빼보기
 	@GetMapping("/searchlist")
 	public void searchlist(SearchCriteria scri, Model model, Criteria cri) {
 		model.addAttribute("cri", cri);
@@ -99,7 +99,7 @@ public class RecruitController {
 		//model.addAttribute("keyword", service.getKeyword(scri));
 	}
 	
-
+//	키워드랑 채용공고 같이 등록하기.
 	@PostMapping("/register")
 	public String registerPost(HashTag hash, Recruit recruit, Criteria cri, RedirectAttributes rttr) {
 		String keyword = hash.getKeyword();
@@ -109,94 +109,14 @@ public class RecruitController {
 		
 		return "redirect:/job/recruit/list";
 	}
+	
+//	삭제
 	@GetMapping("/delete")
 	public String delete (Recruit recruit){
-		log.info("11111111111111111111111111삭제 들어온나" + recruit.getRno());
 		service.remove(recruit.getRno());
 		return "redirect:/job/recruit/list";
 		
 	}
-	
-	/*public String registerFormPost(Recruit recruit, String[] files) {
-		
-		log.info("recruit : " + recruit);
-		log.info("files : " + Arrays.toString(files));
-		
-		service.register(recruit, files);
-		
-		return "";
-	}*/
-	
-	/*@PostMapping("/recruit/register")
-	public String ex1Post(MultipartFile f1, Model model, Recruit recruit, String[] files) {
-		//model에 upload된 파일의 이름을 담아서 보내자.
-		//파일의 이름을 알아야 어떤 파일이 업로드 된지 알기 때문!
-		log.info("`````recruit : " + recruit);
-		log.info("`````files : " + Arrays.toString(files));
-		service.register(recruit, files);
-		log.info(f1.getOriginalFilename());
-		log.info(f1.getContentType());
-		log.info(""+f1.getSize());
-		
-				String uuid = UUID.randomUUID().toString();
-				String uploadName = uuid + "_" + f1.getOriginalFilename();
-				model.addAttribute("uploadName", uploadName);
-				try {
-					OutputStream out = new FileOutputStream("C:\\zzz\\"+uploadName);
-					FileCopyUtils.copy(f1.getInputStream(), out);
-					if(f1.getContentType().startsWith("image")) {
-						model.addAttribute("isImage",f1.getContentType().startsWith("image"));
-						makeThumbnail(uploadName);
-						//thumnail image
-					}
-				
-					
-				} catch (Exception e) {
-					log.warning(e.getMessage());
-				}
-				return "/upload/result";
-			
-		}*/
-	private String makeThumbnail(String fileName)throws Exception{
-        
-		  BufferedImage sourceImg = 
-		      ImageIO.read(new File("C:\\zzz\\", fileName));
-		  
-		  BufferedImage destImg = 
-		      Scalr.resize(sourceImg, 
-		          Scalr.Method.AUTOMATIC, 
-		          Scalr.Mode.FIT_TO_HEIGHT,100);
-		  
-		  String thumbnailName = 
-				  "C:\\zzz" + File.separator +"s_"+ fileName;
-		  
-		  File newFile = new File(thumbnailName);
-		  String formatName = 
-		      fileName.substring(fileName.lastIndexOf(".")+1);
-		  
-		  
-		  ImageIO.write(destImg, formatName.toUpperCase(), newFile);
-		  log.info(thumbnailName);
-		  return thumbnailName;
-		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

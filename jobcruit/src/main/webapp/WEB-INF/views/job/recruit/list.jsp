@@ -45,8 +45,8 @@
                     <thead>
                     <tr>
                         	<th>RNO</th>
-	                        <th>Title</th>
-	                        <th>Company ID</th>
+	                        <th>공고제목</th>
+	                        <th>회사명</th>
 	                        <th>Career</th>
 	                        <th>prefer</th>
                     </tr>
@@ -57,7 +57,7 @@
                      	<tr>
                      		<td><c:out value="${recruit.rno}"></c:out></td>
                      		<td><a href='${recruit.rno}' class='target'><c:out value="${recruit.title}"></c:out></a></td>
-                     		<td><c:out value="${recruit.cid}"></c:out></td>
+                     		<td><c:out value="${recruit.cname}"></c:out></td>
                      		<td><c:out value="${recruit.career}"></c:out></td>
                      		<td><c:out value="${recruit.prefer}"></c:out></td>
                      	</tr>

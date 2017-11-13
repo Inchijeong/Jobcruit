@@ -17,5 +17,6 @@ public class Recruit {
 	private String eligibility;
 	private String dowhat;
 	private Date regDate;
+	private String cname;
 
 }

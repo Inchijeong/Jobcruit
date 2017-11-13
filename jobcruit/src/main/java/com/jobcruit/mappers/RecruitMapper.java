@@ -13,10 +13,13 @@ import com.jobcruit.dto.SearchCriteria;
 
 public interface RecruitMapper extends CRUDMapper<Recruit, Integer> {
 	
-	@Select("select * from tb_recruit order by rno desc limit #{skip}, #{size}")
+	@Select("select r.*, c.cname from tb_recruit as r left outer join tb_company as c on r.cid=c.cid order by rno desc limit #{skip}, #{size} ")
+	//@Select("select * from tb_recruit order by rno desc limit #{skip}, #{size}")
 	public List<Recruit> getList(Criteria cri);
 	
-
+	//메인 가져오기
+	@Select("select * from tb_recruit order by rno desc limit 0, 12")
+	public List<Recruit> getMainList();
 	
 	@Select("select * from tb_recruit as r left outer join tb_hash_keyword as h on h.rno=r.rno where h.keyword=#{keyword} order by r.rno desc limit #{skip}, #{size}")
 	public List<Recruit> searchList(SearchCriteria scri);
@@ -27,6 +30,12 @@ public interface RecruitMapper extends CRUDMapper<Recruit, Integer> {
 	@Delete("delete from tb_fav_recruit where rno=#{rno} and mno=1 ")
 	public void deleteHeart(Recruit recruit);
 	
+
+	
+	
+//	기업 이름 가져오기
+	@Select("select cname from tb_company where cid=#{cid}")
+	public String getCname(@Param("cid")Integer cid);
 	 
 	@Select("select count(rno) from tb_recruit")
 	public int getTotal(Criteria cri);

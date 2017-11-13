@@ -75,17 +75,16 @@ public class RecruitServiceImpl implements RecruitService {
 		return mapper.getSearchTotal(scri);
 	}
 
-	@Override
+/*	@Override
 	@Transactional
 	public void register(Recruit recruit, String[] files) {
 
 		mapper.create(recruit);
-		log.info("recruit" + recruit.toString());
 		
 		for(int i = 0; i < files.length; i++) {
 			mapper.addAttach(recruit.getRno(), files[i]);
 		}
-	}
+	}*/
 
 	@Override
 	public String getKeyword(SearchCriteria scri) {
@@ -111,6 +110,18 @@ public class RecruitServiceImpl implements RecruitService {
 	public void deleteHeart(Recruit recruit) {
 		mapper.deleteHeart(recruit);
 		
+	}
+
+	@Override
+	public String getCompName(Integer cid) {
+		// TODO Auto-generated method stub
+		return mapper.getCname(cid);
+	}
+
+	@Override
+	public List<Recruit> getMainList() {
+		// TODO Auto-generated method stub
+		return mapper.getMainList();
 	}
 
 }
