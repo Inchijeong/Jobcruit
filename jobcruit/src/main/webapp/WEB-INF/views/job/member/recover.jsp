@@ -19,7 +19,7 @@
 					<div id="forgot">
 				  <h3>비밀번호 찾기</h3><br>					
 <!-- 						<form action="/job/member/recoverPost" method="post"> -->
-						<form>
+							<form>
 							<label>이메일</label>
 							<input type="email" placeholder="이메일" class="form-control" name="email" value="abc@naver.com">
 							<label>이름</label>
@@ -58,6 +58,7 @@
 	<script>
 		$(document).ready(function(){
 			var $recoverBtn = $("#recoverBtn");
+			var $result = $("#result");
 			$recoverBtn.click(function() {
 				$.ajax({
 					data: {
@@ -65,14 +66,14 @@
 						"mname" : $("input[name='mname']").val(),
 						"phoneNo" : $("input[name='phoneNo']").val()
 					},
-					url: "/job/member/recover",
+					url: "/job/member/recoverPost",
 					type: "POST",
 					dataType: "text"
 				}).done(function(data) {
 // 					console.log(data);
 					if(data == ""){
 // 						console.log("일치정보");
-						$("#result").html("<span>일치하는 회원정보가 없습니다.</span>");
+						$result.html("<p>일치하는 회원정보가 없습니다.</p>");
 					}else{
 // 						console.log("일치함")
 						location.href = "/job/member/editPassword?mno="+ data;

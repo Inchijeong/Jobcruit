@@ -33,10 +33,9 @@
 							<input type="checkbox" name="rememberMe">
 							로그인 유지
 						  </label>
-							</div><br>
+							</div>
 							
 							<div id="result">
-								<h1><c:out value="${msg}"/> </h1>
 							</div>
 							<br>
 							
@@ -49,6 +48,7 @@
 			    <div class="text-center">
 			        <ul class="list-inline">
 			            <li><a class="text-muted" href="/job/member/recover">비밀번호 찾기</a></li>
+<!-- 			            <li><a class="text-muted" href="/job/member/recover" target="_blank">비밀번호 찾기</a></li> -->
 			            <li><a class="text-muted" href="/job/member/signUp">회원가입</a></li>
 			        </ul>
 			    </div>
@@ -65,8 +65,23 @@
 	<!--Bootstrap -->
 	<script src="/resources/assets/lib/bootstrap/js/bootstrap.js"></script>
 	
+		
+	<!-- sweetalert2 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.min.js"></script>
+	
+	<!-- url 파라미터 뺴오기 -->
+	<script src="/resources/assets/js/getParameters.js" type="text/javascript"></script>
+			
+	
 	<script>
 		$(document).ready(function(){
+			if (getParameters("signUp")) {
+				swal(
+						  '회원가입 성공',
+						  '다시 로그인 해주세요',
+						  'success'
+						);
+			}
 			
 			var $loginBtn = $("#loginBtn");
 			var $result = $("#result");

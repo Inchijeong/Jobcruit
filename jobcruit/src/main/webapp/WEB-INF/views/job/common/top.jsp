@@ -67,21 +67,21 @@
 	$(document).ready(function(){
 		var $logoutView = $(".logoutView");
 		var $logonView = $(".logonView");
- 		var $login = "${login}";
-		console.log("세션" + $login);
- 		var $cookieMno = "${cookie.mnoCookie.value}";
-		console.log("쿠키" + $cookieMno);
+ 		var login = "${login}";
+		console.log("세션" + login);
+ 		var cookieMno = "${cookie.mnoCookie.value}";
+		console.log("쿠키" + cookieMno);
 		var $loginName = $("#loginName");
 		
 		
-		if($login != ""){
+		if(login != ""){
 			$logoutView.hide();
 			$logonView.show();
  			
 			// mno 로 회원정보 가져오기
 			$.ajax({
 				url: "/job/member/getName",
-				data: "mno=" + $login,
+				data: "mno=" + login,
 				type: "post",
 				dataType: "json"
 			}).done(function(data){

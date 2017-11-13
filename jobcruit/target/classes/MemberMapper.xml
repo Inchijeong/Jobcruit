@@ -17,7 +17,7 @@
     values (#{email}, #{mname}, #{phoneNo}, #{password}, #{category})
   </insert>
   
-  <select id="read" resultType="Member">
+  <select id="read" resultMap="memberMap">
   	select * 
   	  from tb_member
   	 where mno = #{mno}
