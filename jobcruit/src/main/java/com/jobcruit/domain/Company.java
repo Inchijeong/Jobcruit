@@ -8,3 +8,4 @@ public class Company {
 	private String cname, company_info, homepage, address, logo;
 	private Integer cid, mno;
 }
+ 
