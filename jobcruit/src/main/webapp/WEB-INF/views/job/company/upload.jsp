@@ -31,6 +31,7 @@
 		if(result) {
 			console.log("===================================="+ result);
 			//opener.$("#logo").val(result);
+			opener.document.getElementById("rlogo").value = result;
 			opener.document.getElementById("logo").value = result;
 			self.close();
 		}

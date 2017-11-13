@@ -1,6 +1,7 @@
 package com.jobcruit.web;
 
 import com.jobcruit.domain.Company;
+import com.jobcruit.domain.Member;
 import com.jobcruit.domain.Review;
 import com.jobcruit.dto.Criteria;
 import com.jobcruit.service.CompanyService;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +50,7 @@ public class CompanyController {
 	@GetMapping("/register")
 	public void registerGet() {
 		log.info("registerGET");
+		
 	}
 	
 	@GetMapping("/upload")
@@ -73,26 +76,35 @@ public class CompanyController {
 		log.info("===============================================delete Get" + cid);
 		service.remove(cid);
 		rttr.addFlashAttribute("criteria", cri);
-		return "redirect:/job/company/list";
+		return "redirect:/job/company/listAll";
 	}
 
+	@GetMapping("/listAll")
+	public void listAll(Criteria cri, Model model) {
+		model.addAttribute("list", service.getListAll(cri));
+		model.addAttribute("total", service.getListCount(cri));
+		log.info("========================================================listAll" + cri);
+	}
+	
 	@GetMapping("/list")
-	public void list(Criteria cri, Model model) {
-		model.addAttribute("list", service.getList(cri));
+	public void list(HttpServletRequest request, Criteria cri, Model model) {
+		Object mno = request.getSession().getAttribute("login");
+		log.info("=====================================================================================================    "+mno);
+		model.addAttribute("list", service.getList(cri, (Integer) mno));
 		model.addAttribute("total", service.getListCount(cri));
 		log.info("========================================================list" + cri);
 	}
 
 	@GetMapping("/page/{page}")
-	public ResponseEntity<List<Company>> getList(@PathVariable("page") int pageNum,
+	public ResponseEntity<List<Company>> getListAll(@PathVariable("page") int pageNum,
 			@RequestParam(name = "size", defaultValue = "10") int size) {
 		Criteria cri = new Criteria(pageNum, size);
-		return new ResponseEntity<List<Company>>(service.getList(cri), HttpStatus.OK);
+		return new ResponseEntity<List<Company>>(service.getListAll(cri), HttpStatus.OK);
 	}
 
 	@PostMapping("/register")
 	public String registerPost(Company company, Criteria cri, RedirectAttributes rttr) {
-		log.info("register Post" + company);
+		log.info("======register Post======" + company);
 
 		try {
 			service.register(company);
@@ -101,7 +113,7 @@ public class CompanyController {
 		}
 		rttr.addFlashAttribute("result", "success");
 		rttr.addFlashAttribute("criteria", cri);
-		return "redirect:/job/company/list";
+		return "redirect:/job/company/listAll";
 	}
 
 	@PostMapping("/update")
@@ -113,7 +125,7 @@ public class CompanyController {
 
 		}
 		rttr.addFlashAttribute("criteria", cri);
-		return "redirect:/job/company/list";
+		return "redirect:/job/company/listAll";
 	}
 	
 	@RequestMapping(value="/upload", method=RequestMethod.POST)

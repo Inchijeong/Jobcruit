@@ -9,6 +9,7 @@ public interface CompanyService {
 	public Company get(Long tno);
 	public void modify(Company vo);
 	public void remove(Long tno);
-	public List<Company> getList(Criteria cri);
+	public List<Company> getList(Criteria cri, Integer tno);
+	public List<Company> getListAll(Criteria cri);
 	public int getListCount(Criteria cri);
 }

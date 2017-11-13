@@ -7,7 +7,7 @@
 
 	<insert id="create">
 		insert into tb_company (cname, company_info, homepage, address, logo, mno)
-		values (#{cname}, #{company_info}, #{homepage},  #{address}, #{logo}, 7)
+		values (#{cname}, #{company_info}, #{homepage},  #{address}, #{logo}, #{mno})
 	</insert>
 
 	<select id="read" resultType="Company">

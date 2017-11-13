@@ -109,13 +109,16 @@
 					</div>
 					<button type="button" class="btn btn-default listBtn" id="mapBtn">지도에서 찾기</button>
 				<button type="button" class="btn btn-default fileBtn">로고 업로드하기</button>
-					<button type="submit" class="btn btn-default">Submit Button</button>
+				<button type="button" class="btn btn-default btn" id="btn" value="">value 확인</button>
+					<button type="submit" class="btn btn-default submitBtn">Submit Button</button>
 					<br>
 					<br>
 					<!-- /.form-group -->
 					<div id="map" style="width: 100%; height: 350px;"></div>
 					<input type="hidden" name="size" value="${criteria.size}">
+					<input type="hidden" name="mno" value="${login}">
 					<input type="hidden" name="company_info" id="company_info" value="">
+					<input type="hidden" name="logo" id="rlogo" value="">
 				</form>
 				
 			</div>
@@ -125,19 +128,26 @@
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5977f0d595044a32c59caa2b8a88c7f8&libraries=services"></script>
 	<script>
 	$(document).ready(function() {
-			var info = $("#info1").val()+"/"+$("#info2").val()+"/"+$("#info3").val()+"/"+$("#info4").val();
-			$("#company_info").val(info);
-			console.log("=================="+info);
 		
+// 		if(!${login}) {
+			
+// 		}
 		
 		$(".fileBtn").on("click", function(e) {
 			window.open('/job/company/upload', '_blank');
 		});
 		
+		$(".submitBtn").on("click", function(e) {
+			var info = $("#info1").val()+"/"+$("#info2").val()+"/"+$("#info3").val()+"/"+$("#info4").val();
+			$("#company_info").val(info);
+			$("#logo").val($("#rlogo").val());
+			console.log("=================="+info);
+			console.log("=============logo=============================="+$("#logo").val());
+		});
+		
 		
 		$("#mapBtn").on("click", function(e) {
 			showMap();
-			
 		});
 
 		function showMap() {

@@ -44,15 +44,20 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public List<Company> getList(Criteria cri) {
-		 log.info("getList");
-		return mapper.getlist(cri);
-	}
-
-
-	@Override
 	public int getListCount(Criteria cri) {
 		return mapper.getTotal(cri);
+	}
+
+	@Override
+	public List<Company> getList(Criteria cri, Integer mno) {
+		log.info("getList");
+		return mapper.getlist(cri, mno);
+	}
+
+	@Override
+	public List<Company> getListAll(Criteria cri) {
+		log.info("getListAll");
+		return mapper.getlistAll(cri);
 	}
 
 }

@@ -70,11 +70,7 @@
 				<div class="well">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination mypage">
-							<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">Next</a></li>
+							
 						</ul>
 					</nav>
 				</div>
@@ -83,7 +79,7 @@
 	</div>
 </div>
 
-	<form id="actionForm" action="/job/company/list" method="get">
+	<form id="actionForm" action="/job/company/listAll" method="get">
 		<input type="hidden" name="page" value="${criteria.page}">
 		<input type="hidden" name="cid">
 		<input type="hidden" name="size" value="${criteria.size}">
@@ -91,7 +87,7 @@
 	<script src="/resources/assets/js/pagination.js"></script>
 	<script> 
     $(document).ready(function() { 
-    	 
+    	  
     	var actionForm = $("#actionForm");
     	var result = '${result}';
     	var size = '${criteria.size}';

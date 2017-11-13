@@ -127,12 +127,17 @@
 				<div id="map" style="width: 100%; height: 350px;"></div>
 				</div>
 				<!-- /.form-group -->
-				<form id="actionForm" action="/job/company/list" method="get">
+				<form id="actionForm" action="/job/company/listAll" method="get">
 					<input type="hidden" id="page" name="page" value="${cri.page}">
 					<input type="hidden" id="cid" name="cid" value="${company.cid}">
 					<input type="hidden" id="size" name="size" value="${cri.size}">
 				</form>
 				<form id="actionForm2" action="/job/company/update" method="get">
+					<input type="hidden" name="page" value="${cri.page}"> <input
+						type="hidden" name="cid" value="${company.cid}"> <input
+						type="hidden" name="size" value="${cri.size}">
+				</form>
+				<form id="actionForm3" action="/job/recruit/register" method="get">
 					<input type="hidden" name="page" value="${cri.page}"> <input
 						type="hidden" name="cid" value="${company.cid}"> <input
 						type="hidden" name="size" value="${cri.size}">
@@ -153,6 +158,10 @@
 			$(".modBtn").click(function(event) {
 				console.log("============================"+ $("#cid").val());
 				actionForm2.submit();
+			});
+			
+			$(".recruitBtn").click(function(event) {
+				actionForm3.submit();
 			});
 
 			$(".listBtn").click(function(event) {
