@@ -104,21 +104,4 @@ public class FreeBoardController {
 		}
 		return entity;
 	}
-	
-	/*
-	@GetMapping("/search")
-	@ResponseBody
-	public SearchResult<FreeBoard,SearchCriteria> getSearchList(SearchCriteria cri){
-		SearchResult<FreeBoard, SearchCriteria> result = new SearchResult<FreeBoard, SearchCriteria>(); 
-		try {
-			log.info("page : "+ cri.getKeyword());
-			log.info("size : "+ cri.getSearchType());
-			result.setList(service.getSearchList(cri));
-			result.setCri(cri);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-	*/
 }

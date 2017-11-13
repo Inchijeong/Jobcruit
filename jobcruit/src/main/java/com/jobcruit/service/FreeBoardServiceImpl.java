@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jobcruit.domain.FreeBoard;
 import com.jobcruit.dto.Criteria;
@@ -20,8 +21,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		mapper.create(vo);
 	}
 
+	@Transactional
 	@Override
 	public FreeBoard detail(Integer key) throws Exception {
+		mapper.updateReadCount(key);
 		return mapper.read(key);
 	}
 
@@ -43,10 +46,5 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public int getListCount(SearchCriteria cri) throws Exception {
 		return mapper.getListCount(cri);
-	}
-
-	@Override
-	public List<FreeBoard> getSearchList(SearchCriteria cri) {
-		return mapper.getSearchList(cri);
 	}
 }

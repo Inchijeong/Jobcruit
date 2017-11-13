@@ -15,10 +15,5 @@ public interface FreeBoardMapper extends CRUDMapper<FreeBoard, Integer> {
 
 	public int getListCount(SearchCriteria cri);
 	
-	@Insert("insert into tb_free_attach (fno, file_path, file_name) values (#{fno}, #{filePath}, #{fileName})")
-	public void addAttach(FreeAttach attach);
-	
-	
-	
-	public List<FreeBoard> getSearchList(SearchCriteria cri);
+	public void updateReadCount(Integer key);
 }

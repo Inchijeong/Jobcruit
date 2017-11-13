@@ -129,11 +129,11 @@
 			function makeURL(pageNum){
 				console.log("makeURL");
 				var listSize = $("#listSize option:selected").val();
+	    	var searchType = $(".searchType option:selected").val();
 	    	if(!pageNum){
-	    		if(keyword == ""){
+	    		if(!isSearch){
 		        window.history.replaceState({page:1, size:listSize}, null, "?page=1&size="+listSize);
 	    		}else{
-	    			var searchType = $(".searchType option:selected").val();
 	    			window.history.replaceState(
     					{page:1, size:listSize, stype:searchType, skey:keyword}, 
     					null,
@@ -141,14 +141,14 @@
 	    			);
 	    		}
 	    	}
-	      getServerData(pageNum, listSize);
+	      getServerData(pageNum, listSize, searchType);
 	    }
 	
 			//페이지번호, 화면에 표시할 게시물 수로 데이터 가져오기 
-	    function getServerData(pageNum, listSize){
+	    function getServerData(pageNum, listSize, searchType){
         pageNum = !pageNum ? 1 : pageNum;
         listSize = !listSize ? 10 : listSize;
-        var searchType = $(".searchType option:selected").val();
+        
         console.log("getServerData > page:"+pageNum + ", list:"+listSize+", search:"+searchType+", keyword:"+keyword);
         $.getJSON("/job/free/page",
         	{
@@ -168,17 +168,17 @@
 	        var month = 0;
 	        var date = 0;
 	        
-	        for(var i=0, len = list.length; i< len; i++){
+	        for(let i=0, len = list.length; i< len; i++){
 	        	d = new Date(list[i].regDate);
 	        	month = d.getMonth()+1;
 	        	date = d.getDate();
 	        	
 	        	str += "<tr>";
-            str += "<td>"+list[i].fno+"</td>";
-            str += "<td><a href='"+list[i].fno+"' class='read'>"+list[i].title+"</td>";
-            str += "<td>"+list[i].mname+"</td>";
-            str += "<td>"+(d.getYear()+1900)+"-"+(month < 10 ? "0"+month:month)+"-"+(date < 10 ? "0"+date:date)+"</td>";
-            str += "<td>"+list[i].readCount+"</td>";
+            str += "<td>"+ list[i].fno +"</td>";
+            str += "<td><a href='"+ list[i].fno +"' class='read'>"+ list[i].title +"</td>";
+            str += "<td>"+ list[i].mname +"</td>";
+            str += "<td>"+ getDateFormat(list[i].regDate,"-") +"</td>";
+            str += "<td>"+ list[i].readCount +"</td>";
             str += "</tr>";
 	        }
 	        $("#dataTable tbody").html(str);
@@ -205,12 +205,37 @@
 	    	$(".pagination").html(str);
 	    }
 	    
+	    function setPushState(pageNum){
+	    	var listSize = $("#listSize option:selected").val();
+	    	if(!isSearch){
+			      window.history.pushState({page:pageNum,size:listSize}, null,"?page="+pageNum+"&size="+listSize);
+				  }else{
+						var searchType = $(".searchType option:selected").val();
+						window.history.pushState(
+							{page:pageNum, size:listSize, stype:searchType, skey:keyword}, 
+							null,
+							"?page="+pageNum+"&size="+listSize+"&searchType="+searchType+"&keyword="+keyword
+						);
+					}	
+	    }
+	    
 	    function searchKeyword(){
+	    	isSearch = true;
 	    	var $search = $(".searchTxt");
+	    	if($search.val().trim() == ""){
+	    		swal({
+	    			title:"검색어를 입력하세요",
+	    			showConfirmButton: false,
+					  timer: 1000
+					});
+	    		return false;
+	    	}
+	    	
 	    	console.log("keyword :" +$search.val());
     		keyword = $search.val();
     		$search.val("");
     		
+    		$(".searchType option:eq(0)").attr("selected","selected");
     		$("header > h5").html("'"+keyword+"' 검색결과");
     		$(".regBtn").addClass("hidden");
     		$(".listBtn").removeClass("hidden");
@@ -218,16 +243,10 @@
     		makeURL();
 	    }
 	    
-	    function setPustState(pageNum){
-	    	
-	    	
-	    }
-
 	    //화면에 표시할 게시물 수
     	$("#listSize").change(function(event){
     		var pageNum = 1;
-    		var listSize = $("#listSize option:selected").val();
-    		window.history.pushState({page:pageNum, size:listSize}, null,"?page="+pageNum+"&size="+listSize);
+    		setPushState(pageNum);
     		makeURL(pageNum);
     	});
 	    
@@ -254,20 +273,10 @@
 	    $(".pagination").on("click", "a", function(e){
 	      e.preventDefault();
 
-	      var $this = $(this);
-	      var pageNum = $this.attr("href");
-	      var listSize = $("#listSize option:selected").val();
+	      var pageNum = $(this).attr("href");
+	      
 	      console.log("PAGE NUM : " + pageNum);
-				if(keyword == ""){
-		      window.history.pushState({page:pageNum,size:listSize}, null,"?page="+pageNum+"&size="+listSize);
-			  }else{
-					var searchType = $(".searchType option:selected").val();
-					window.history.pushState(
-						{page:pageNum, size:listSize, stype:searchType, skey:keyword}, 
-						null,
-						"?page="+pageNum+"&size="+listSize+"&searchType="+searchType+"&keyword="+keyword
-					);
-				}	
+	      setPushState(pageNum);
 	      makeURL(pageNum);
 	    });
 	    
@@ -288,15 +297,22 @@
 	    window.onpopstate = function(e){
 	        console.log(e);
 	        
+	        $("#listSize").val(e.state.size).attr("selected","selected");
+	        
 	        if(e.state.skey){
 	        	isSearch = true;
 	        	keyword = e.state.skey;
 	        	$(".searchType").val(e.state.stype).attr("selected","selected");
+	        	$("header > h5").html("'"+keyword+"' 검색결과");
+		    		$(".regBtn").addClass("hidden");
+		    		$(".listBtn").removeClass("hidden");
 	        }else{
 	        	isSearch = false;
 	        	keyword = "";
+	        	$("header > h5").html("자유게시판");
+			    	$(".regBtn").removeClass("hidden");
+		    		$(".listBtn").addClass("hidden");
 	        }
-	        $("#listSize").val(e.state.size).attr("selected","selected");
 	        makeURL(e.state.page);
 	    }
 		</script> 

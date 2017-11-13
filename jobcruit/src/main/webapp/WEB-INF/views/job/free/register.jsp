@@ -24,7 +24,7 @@
 					        <div class="body">
 					        
 				            <form class="form-horizontal"  method="post">
-				            	<input type="hidden" name="mno" value="1">
+				            	<input type="hidden" name="mno" value="${login}">
 			                <div class="form-group">
 		                    <label class="control-label col-lg-4">제목</label>
 		                    <div class="col-lg-8">

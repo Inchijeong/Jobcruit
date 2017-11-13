@@ -13,5 +13,4 @@ public interface FreeBoardService {
 	public void delete(Integer key) throws Exception;
 	public List<FreeBoard> getList(SearchCriteria cri) throws Exception;
 	public int getListCount(SearchCriteria cri) throws Exception;
-	public List<FreeBoard> getSearchList(SearchCriteria cri);
 }

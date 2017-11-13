@@ -47,33 +47,6 @@
    		  on f.mno = m.mno
  		 where f.fno = #{fno};
 	</select>
-
-	<!-- <select id="getList" parameterType="Criteria" resultMap="FreeBoardMap">
-		select f.*, m.mname
-  		  from tb_freeboard as f
-  		  left outer join tb_member as m
-		    on f.mno = m.mno
- 		 order by f.fno desc limit #{skip}, #{size}
-	</select> -->
-	<select id="getListCount" parameterType="SearchCriteria" resultType="int">
-		select count(fno) 
-		  from tb_freeboard as f
-  		left outer join tb_member as m
-		    on f.mno = m.mno
-		<if test="searchType != ''">
-			<choose>
-				<when test="searchType == 'all'">
-			 		where f.title like '%${keyword}%' or f.content like '%${keyword}%'
-			 	</when>
-			 	<when test="searchType == 'writer'">
-			 		where m.mname like '%${keyword}%'
-			 	</when>
-			 	<otherwise>
-			 		where f.title like '%${keyword}%'
-			 	</otherwise>
-			</choose>
-		</if>	 
-	</select>
 	
 	<select id="getList" parameterType="SearchCriteria" resultMap="FreeBoardMap">
 		select f.*, m.mname
@@ -96,21 +69,29 @@
  		 order by f.fno desc limit #{skip}, #{size}
 	</select>
 	
-	<select id="getSearchList" parameterType="SearchCriteria" resultMap="FreeBoardMap">
-		select f.*, m.mname
-  		from tb_freeboard as f
+	<select id="getListCount" parameterType="SearchCriteria" resultType="int">
+		select count(fno) 
+		  from tb_freeboard as f
   		left outer join tb_member as m
 		    on f.mno = m.mno
-		<choose>
-			<when test="searchType == 'all'">
-		 		where f.title like '%${keyword}%' or f.content like '%${keyword}%'
-		 	</when>
-		 	<when test="searchType == 'writer'">
-		 		where m.mname like '%${keyword}%'
-		 	</when>
-		 	<otherwise>
-		 		where f.title like '%${keyword}%'
-		 	</otherwise>
-		</choose>
+		<if test="searchType != ''">
+			<choose>
+				<when test="searchType == 'all'">
+			 		where f.title like '%${keyword}%' or f.content like '%${keyword}%'
+			 	</when>
+			 	<when test="searchType == 'writer'">
+			 		where m.mname like '%${keyword}%'
+			 	</when>
+			 	<otherwise>
+			 		where f.title like '%${keyword}%'
+			 	</otherwise>
+			</choose>
+		</if>	 
 	</select>
+	
+	<update id="updateReadCount">
+		update tb_freeboard
+		   set read_count = read_count + 1
+		 where fno = #{fno}	
+	</update>
 </mapper>
