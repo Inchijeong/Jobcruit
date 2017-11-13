@@ -26,40 +26,67 @@
 		
 		<div class="col-lg-6">
        <br><br><br><br><br><br>
+       							<form id='actionForm' action='/job/recruit/list' method='Post'>
                                      	<div class="form-group">
                                             <label>번호</label>
-                                            <input type="text" name="bno" class="form-control" value='${recruit.rno}' readonly='readonly'>
+                                            <input type="text" name="rno" class="form-control" value='${recruit.rno}' readonly="readonly" >
                                         </div>
                                         <div class="form-group">
-                                            <label>제목</label>
-                                            <input type="text" name="title" class="form-control" value='${recruit.title}' readonly='readonly'>
+                                            <label>공고 제목</label>
+                                            <input type="text" name="title" class="form-control" value='${recruit.title}' readonly="readonly" >
                                         </div>
                                          <div class="form-group">
-                                            <label>경력</label>
-                                            <input type="text" name="content" class="form-control" value='${recruit.career}' readonly='readonly'>
+                                            <label>희망 경력</label>
+                                            <input type="text" name="career" class="form-control" value='${recruit.career}' readonly="readonly">
                                         </div>
                                          <div class="form-group">
-                                            <label>학력사항</label>
-                                            <input type="text" name="eduLevel" class="form-control" value='${recruit.eduLevel}' readonly='readonly'>
+                                            <label>희망 학력</label>
+                                            <input type="text" name="eduLevel" class="form-control" value='${recruit.eduLevel}' readonly="readonly">
                                         </div>
                                         <div class="form-group">
+                                            <label>자격 요건</label>
+                                            <input type="text" name="eligibility" class="form-control" value='${recruit.eligibility}' readonly="readonly" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label>고용 형태 </label>
+                                            <input type="text" name="hireType" class="form-control" value='${recruit.hireType}' readonly="readonly" >
+                                        </div>
+                                      
+                                        <div class="form-group">
+                                            <label>직급 </label>
+                                            <input type="text" name="position" class="form-control" value='${recruit.position}' readonly="readonly" >
+                                        </div>
+                                      
+                                        <div class="form-group">
+                                            <label>우대사항 </label>
+                                            <input type="text" name="prefer" class="form-control" value='${recruit.prefer}' readonly="readonly" >
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>업무내용 </label>
+                                            <input type="text" name="dowhat" class="form-control" value='${recruit.dowhat}' readonly="readonly" >
+                                        </div>
+										<div class="form-group">
                                         	<button type="button" class="btn btn-default " aria-label="Left Align" id="interest">
 											  이 기업 좋아요<span class="" aria-hidden="true" id="heart" style="color: red"></span>
 											</button>
                                         </div>
-                                            <button type="button" class="btn btn-default modBtn">Modify</button>
-                                            <button type="button" class="btn btn-default listBtn">List</button>
+                                        
+                                        
+                                      
+                                            <button type="button" class="btn btn-default editBtn">Mod/Delete</button>
+                                            <button type="button" class="btn btn-default ListBtn">List</button>
 										
-											<form id='actionForm' action='/job/recruit/list' method='get'>
-												<input type="hidden" name='page' value='${cri.page}'>
-												<input type="hidden" name='size' value='${cri.size}'>
-												<input type='hidden' name='rno' value='${recruit.rno}'>
-												<input type='hidden' name='rno' value='${recruit.rno}'>
-											</form>
+								
+												
+								</form>
 											
                                 </div>
-		
-		
+			<form id="listForm" action='/job/recruit/list'>
+				<input type='hidden' name='page' value=1>
+				<input type='hidden' name='size' value=10>
+			</form>
+				
 		
 		
 		
@@ -76,12 +103,17 @@
 		$(document).ready(function(){
 			
 			var actionForm = $("#actionForm");
+			var listForm = $("#listForm");
 			
 			$(".listBtn").click(function(){
-				actionForm.submit();
+				listForm.submit();
 			});
-			var heart = $("#heart");
+			$(".editBtn").click(function(){
+				actionForm.attr("action","/job/recruit/edit")
+				actionForm.submit();
+			})
 			
+			var heart = $("#heart");
 			$("#interest").click(function(){
 				 $("#heart").toggleClass("glyphicon glyphicon-heart-empty");
 				 
@@ -110,6 +142,7 @@
 				 
 				
 			});
+						
 				
 			});
 			

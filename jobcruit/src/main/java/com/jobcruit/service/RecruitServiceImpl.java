@@ -48,13 +48,13 @@ public class RecruitServiceImpl implements RecruitService {
 
 	@Override
 	public void modify(Recruit recruit) {
-		// TODO Auto-generated method stub
+		mapper.update(recruit);
 		
 	}
 
 	@Override
 	public void remove(Integer rno) {
-		// TODO Auto-generated method stub
+		mapper.delete(rno);
 		
 	}
 

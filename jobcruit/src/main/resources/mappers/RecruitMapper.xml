@@ -29,10 +29,10 @@
 	
 	<insert id="create" >
 		insert into tb_recruit(cid, title, career, edu_level, prefer, hire_type, position, eligibility, dowhat )
-		values(123, #{title}, #{career}, #{eduLevel}, #{prefer}, #{hireType}, #{position},#{eligibility},#{dowhat})
+		values(#{cid}, #{title}, #{career}, #{eduLevel}, #{prefer}, #{hireType}, #{position},#{eligibility},#{dowhat})
 	</insert>
 	
-	
+	 
 	<select id="read" resultMap="RecruitMap">
 		select * from tb_recruit where rno = #{rno}
 	</select>
@@ -41,9 +41,14 @@
 	<update id="update">
 		update tb_recruit
 			set title = #{title}
-			, content = #{content}
-			, updatedate= #{updatedate}
-			where bno = #{bno}
+			, career = #{career}
+			, edu_level = #{eduLevel}
+			, prefer= #{prefer}
+			, hire_type= #{hireType}
+			, position= #{position}
+			, eligibility= #{eligibility}
+			, dowhat= #{dowhat}
+			where rno = #{rno}
 	</update>
 	
 	<delete id="delete">

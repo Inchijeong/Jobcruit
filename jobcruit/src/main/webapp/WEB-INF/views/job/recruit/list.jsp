@@ -107,7 +107,7 @@
     $(document).ready(function() {
     	
 	   var actionForm = $("#actionForm");
-    	
+    
        var result = '${result}';
       
        var pageResult = makePage({page:${criteria.page}, total:${total}, size:${criteria.size}});
@@ -180,9 +180,9 @@
        
        console.log(pageResult);
        
-        if(result) {
+         if(result) {
           alert(result);
-       }
+       } 
       
     }); 
     

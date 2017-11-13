@@ -29,7 +29,7 @@
 						<!-- <form class="main-search" action=""> -->
 							<div class="input-group">
 								<input type="text" class="form-control"
-									placeholder="검색해주세요" id="searchval"><span
+									placeholder="검색해주세요" id="searchval" value='${scri.keyword}'><span
 									class="input-group-btn">
 									<button class="btn btn-primary btn-sm text-muted" id="searchBtn">
 									검색

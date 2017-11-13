@@ -34,69 +34,88 @@ import lombok.extern.java.Log;
 
 @Log
 @Controller
-@RequestMapping("/job/*")
+@RequestMapping("/job/recruit")
 public class RecruitController {
 	
 	@Autowired
 	private RecruitService service;
-	
-	@GetMapping("/recruit/register")//model -> request setAttribute
-	public void registerGET(Criteria cri) {
+	 
+	@GetMapping("/register")//model -> request setAttribute
+	public void registerGET(Criteria cri, Integer cid) {
 		
 	}
 	
 	@ResponseBody
-	@GetMapping("/recruit/heart")//model -> request setAttribute
+	@GetMapping("/heart")//model -> request setAttribute
 	public void registerHeart(Recruit recruit) {
 		log.info("11111111111"+recruit.getRno());
 		service.registerHeart(recruit);
 	}
-	
 	@ResponseBody
-	@GetMapping("/recruit/heartCancel")//model -> request setAttribute
+	@GetMapping("/heartCancel")//model -> request setAttribute
 	public void deleteHeart(Recruit recruit) {
 		service.deleteHeart(recruit);
 	}
 	
 	
-	@GetMapping("/recruit/detail")
+	@GetMapping("/detail")
 	public void detail(@RequestParam(name="rno")int rno, @ModelAttribute("cri")Criteria cri, Model model) {
 		model.addAttribute("recruit", service.get(rno));
 	}
 	
-	@GetMapping("/recruit/list")
+	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("criteria", cri);
 		model.addAttribute("total", service.getListCount(cri));
 		log.info(""+cri);
 	}
 	
-	@GetMapping("/recruit/searchlist")
+	
+//	디테일에서 수정버튼 눌렀을 때
+	@PostMapping("/edit")
+	public void editGET(Recruit recruit) {
+		
+	}
+	
+//	수정화면에서 저장하기 눌렀을 때
+	@GetMapping("/edit")
+	public String editSave(Recruit recruit) {
+		log.info("1111111111"+recruit);
+		log.info("수정 포스트 호출!!!");
+		service.modify(recruit);
+		return "redirect:/job/recruit/detail?rno="+recruit.getRno();
+		
+	}
+	
+	
+	
+	@GetMapping("/searchlist")
 	public void searchlist(SearchCriteria scri, Model model, Criteria cri) {
-		log.info("keyword : "+scri.getKeyword());
-		scri.setKeyword(scri.getKeyword().replaceAll(" ", "','"));
-		log.info("ddddddddddddd"+ scri.getKeyword());
 		model.addAttribute("cri", cri);
 		model.addAttribute("scri", scri);
 		model.addAttribute("list", service.searchList(scri));
 		model.addAttribute("total", service.getSearchCount(scri));
 		//model.addAttribute("keyword", service.getKeyword(scri));
-		log.info("------ARJGNAEKHNGOAN--------"+service.getKeyword(scri));
-		log.info(""+cri);
 	}
 	
-	@PostMapping("/recruit/register")
+
+	@PostMapping("/register")
 	public String registerPost(HashTag hash, Recruit recruit, Criteria cri, RedirectAttributes rttr) {
-		log.info("``````````````"+ recruit.getPrefer());
 		String keyword = hash.getKeyword();
-		log.info("*******************************"+keyword);
 		String result = service.register(recruit, keyword);
 		rttr.addFlashAttribute("result", result );
 		rttr.addFlashAttribute("criteria", cri);
 		
 		return "redirect:/job/recruit/list";
 	}
-	
+	@GetMapping("/delete")
+	public String delete (Recruit recruit){
+		log.info("11111111111111111111111111삭제 들어온나" + recruit.getRno());
+		service.remove(recruit.getRno());
+		return "redirect:/job/recruit/list";
+		
+	}
 	
 	/*public String registerFormPost(Recruit recruit, String[] files) {
 		

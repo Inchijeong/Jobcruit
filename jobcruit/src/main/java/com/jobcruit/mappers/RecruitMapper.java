@@ -27,7 +27,7 @@ public interface RecruitMapper extends CRUDMapper<Recruit, Integer> {
 	@Delete("delete from tb_fav_recruit where rno=#{rno} and mno=1 ")
 	public void deleteHeart(Recruit recruit);
 	
-	
+	 
 	@Select("select count(rno) from tb_recruit")
 	public int getTotal(Criteria cri);
 	
