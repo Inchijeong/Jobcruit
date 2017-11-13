@@ -46,15 +46,15 @@
 			<beans:ref bean="CheckInterceptor"/>
 		</interceptor>
 		
-		<interceptor>
-			<mapping path="/job/common/*"/>
-			<beans:ref bean="CheckInterceptor"/>
-		</interceptor>
+<!-- 		<interceptor> -->
+<!-- 			<mapping path="/job/common/*"/> -->
+<!-- 			<beans:ref bean="CheckInterceptor"/> -->
+<!-- 		</interceptor> -->
 		
-		<interceptor>
-			<mapping path="/job/free/*"/>
-			<beans:ref bean="CheckInterceptor"/>
-		</interceptor>
+<!-- 		<interceptor> -->
+<!-- 			<mapping path="/job/free/*"/> -->
+<!-- 			<beans:ref bean="CheckInterceptor"/> -->
+<!-- 		</interceptor> -->
 		
 		
 	</interceptors>

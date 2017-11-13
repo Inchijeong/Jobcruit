@@ -20,15 +20,13 @@
 						<h3>개인정보 수정</h3><br>
 						<form action="/job/member/editInfo" method="post">
 						  <label>이름</label>
-							<input type="text" placeholder="이름" class="form-control"	name="mname" value="chi">
-						  <label>이메일</label>
-							<input type="email" placeholder="이메일" class="form-control" name="email" value="abc@naver.com">
+							<input type="text" placeholder="이름" class="form-control"	name="mname" id="mname">
 						  <label>비밀번호</label>
-							<input type="password" placeholder="비밀번호" class="form-control" name="password" value="1234">
+							<input type="password" placeholder="비밀번호" class="form-control" name="password" id="password">
 						  <label>비밀번호 확인</label>
-							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" value="1234">
+							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" id="passwordChk">
 						  <label>휴대폰 번호</label>
-							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" value="01022223333"><br>
+							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" id="phoneNo"><br>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">확인</button>
 						</form>
 					</div>
@@ -47,7 +45,25 @@
 
 
 			<script type="text/javascript">
-				
+				$(document).ready(function(){
+
+					var $mname = $("#mname");
+					var $password = $("#password");
+					var $passwordChk = $("#passwordChk");
+					var $phoneNo = $("#phoneNo");
+					
+					$.ajax({
+						url: "/job/member/getName",
+						type: "post",
+						data: "mno=" + "${login}",
+						dataType: "json"
+					}).done(function(data){
+						$mname.val(data.mname);
+						$password.val(data.password);
+						$passwordChk.val(data.password);
+						$phoneNo.val(data.phoneNo);
+					});
+				});
 			
 			
 			</script>

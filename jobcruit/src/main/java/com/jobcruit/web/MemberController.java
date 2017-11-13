@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.jobcruit.domain.Member;
@@ -29,13 +30,14 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 	
+	// 사용자 정보 가져오기
 	@PostMapping("/getName")
 	@ResponseBody
 	public Member getNamePost(Integer mno) {
 		return service.get(mno);
 	}
 	
-	// 아이티 중복 체크
+	// 아이디 중복 체크
 	@PostMapping("/checkID")
 	@ResponseBody
 	public Integer checkIDPost(String email) {
@@ -46,37 +48,46 @@ public class MemberController {
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/checkPassword")
 	public void checkPasswordGet() {
-		
+//		log.info("mno 비번 확인 왔음" + mno);
 	}
 	
 	// 비밀번호 확인
 	@PostMapping("/checkPassword")
-	public void checkPasswordPost() {
-		
+	@ResponseBody
+	public Integer checkPasswordPost(Member member) {
+		log.info("--------------체크 후" + service.checkPassword(member));
+		return service.checkPassword(member);
+//		return service.checkPassword(member) == 0 ? "" : "redirect:/job/member/editInfo";
 	}
+	
 	
 	// 비밀번호 변경 페이지로 이동
 	@GetMapping("/editPassword")
-	public void editPasswordGet() {
-		
+	public void editPasswordGet(Integer mno, Model model) {
+//		log.info("받은 mno" + mno);
+		model.addAttribute("mno", mno);
+//		rttr.addFlashAttribute("mno", mno);
+//		log.info("플래시에 넣은 mno" + rttr.getFlashAttributes().get("mno"));
 	}
 	
-	// 비밀번호 변경 페이지로 이동
+	// 비밀번호 변경 
 	@PostMapping("/editPassword")
-	public void editPasswordPost() {
-		
+	public String editPasswordPost(Member member) {
+		service.modifyPassword(member);
+		return "redirect:/job/common/main?editPassword=success";
 	}
 	
 	// 개인정보 변경 페이지로 이동
 	@GetMapping("/editInfo")
-	public void editMemberInfoGet() {
+	public void editInfoGet() {
 		
 	}
 	
 	// 개인정보 변경
 	@PostMapping("/editInfo")
-	public void editMemberInfoPost(Member vo) {
-		service.modify(vo);
+	public String editInfoPost(Member member) {
+		service.modify(member);
+		return "redirect:/job/myPage/myPage?editInfo=success";
 	}
 	
 	// 비번찾기 찾기 페이지로 이동
@@ -86,10 +97,10 @@ public class MemberController {
 	} 
 	
 	// 비밀번호 찾기
-	@PostMapping("/recover")
+	@PostMapping("/recoverPost")
 	@ResponseBody
-	public Integer recoverPost(Member vo) {
-		return service.recover(vo);
+	public Integer recoverPost(Member member) {
+		return service.recover(member);
 	}
 	
 	// 로그인 페이지로 이동
@@ -100,12 +111,12 @@ public class MemberController {
 	
 	// 로그인
 	@PostMapping("/loginPost")
-	public void loginPost(Member vo, Boolean rememberId, Boolean rememberMe, Model model) {
+	public void loginPost(Member member, Boolean rememberId, Boolean rememberMe, Model model) {
 //		log.info(""+ rememberId);
 //		log.info(""+ rememberMe);
-//		log.info("사용자 :" + service.getLogin(vo));
+//		log.info("사용자 :" + service.getLogin(member));
 		
-		model.addAttribute("mno", service.getLogin(vo));
+		model.addAttribute("mno", service.getLogin(member));
 		model.addAttribute("rememberId", rememberId);
 		model.addAttribute("rememberMe", rememberMe);
 		
@@ -115,8 +126,8 @@ public class MemberController {
 	// 로그인 아이디, 비밀번호 체크
 	@PostMapping("/loginCheck")
 	@ResponseBody
-	public Integer loginCheck(Member vo) {
-		return service.getLogin(vo);
+	public Integer loginCheck(Member member) {
+		return service.getLogin(member);
 	};
 	
 	// 로그아웃
@@ -153,9 +164,9 @@ public class MemberController {
 	
 	// 회원가입
 	@PostMapping("/signUpPost")
-	public String singUpPost(Member vo) {
-		service.register(vo);
-		return "redirect:/job/common/main";
+	public String singUpPost(Member member) {
+		service.register(member);
+		return "redirect:/job/member/login?signUp=success";
 	}
 	
 }
