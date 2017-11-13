@@ -40,5 +40,5 @@ function showAlert(msg, type, isButton, time){
 		type:type,
 		showConfirmButton: isButton,
 		timer: time
-	});
+	}).then();
 }
