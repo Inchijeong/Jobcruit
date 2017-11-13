@@ -21,11 +21,10 @@
 		<div class="bg-dark dk" id="wrap">
 			<%@include file="../common/top.jsp" %> 
 			
-		
+		<br />
 		
 		
 		<div class="col-lg-6">
-       <br><br><br><br><br><br>
        							<form id='actionForm' action='/job/recruit/list' method='Post'>
                                      	<div class="form-group">
                                             <label>번호</label>
@@ -68,14 +67,14 @@
                                         </div>
 										<div class="form-group">
                                         	<button type="button" class="btn btn-default " aria-label="Left Align" id="interest">
-											  이 기업 좋아요<span class="" aria-hidden="true" id="heart" style="color: red"></span>
+											  좋아요<span class="" aria-hidden="true" id="heart" style="color: red"></span>
 											</button>
                                         </div>
                                         
                                         
                                       
-                                            <button type="button" class="btn btn-default editBtn">Mod/Delete</button>
-                                            <button type="button" class="btn btn-default ListBtn">List</button>
+                                            <button type="button" class="btn btn-default editBtn">수정/삭제</button>
+                                            <button type="button" class="btn btn-default ListBtn">닫기</button>
 										
 								
 												
@@ -106,7 +105,8 @@
 			var listForm = $("#listForm");
 			
 			$(".listBtn").click(function(){
-				listForm.submit();
+				//listForm.submit();
+				self.close();
 			});
 			$(".editBtn").click(function(){
 				actionForm.attr("action","/job/recruit/edit")

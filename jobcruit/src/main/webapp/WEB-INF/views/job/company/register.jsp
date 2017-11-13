@@ -18,7 +18,7 @@
 		<div class="box dark">
 			<header>
 				<div class="icons">
-					<i class="fa fa-edit"></i>
+					<i class="glyphicon glyphicon-edit"></i>
 				</div>
 				<h5>기업 등록</h5>
 				<!-- .toolbar -->

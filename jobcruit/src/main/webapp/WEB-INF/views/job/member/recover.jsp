@@ -21,11 +21,11 @@
 <!-- 						<form action="/job/member/recoverPost" method="post"> -->
 							<form>
 							<label>이메일</label>
-							<input type="email" placeholder="이메일" class="form-control" name="email">
+							<input type="email" placeholder="이메일" class="form-control" name="email" required>
 							<label>이름</label>
-							<input type="text" placeholder="이름" class="form-control" name="mname">
+							<input type="text" placeholder="이름" class="form-control" name="mname" required>
 							<label>휴대폰 번호</label>
-							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo">
+							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" required>
 							
 							<div id="result">
 							</div>

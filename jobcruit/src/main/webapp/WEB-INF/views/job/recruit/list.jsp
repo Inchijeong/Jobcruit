@@ -19,8 +19,8 @@
   <div class="col-lg-12">
         <div class="box">
             <header>
-                <div class="icons"><i class="fa fa-table"></i></div>
-                <h5>Dynamic Table</h5>
+                <div class="icons"><i class="glyphicon glyphicon-list"></i></div>
+                <h5>채용정보</h5>
             </header>
 
 
@@ -44,11 +44,11 @@
                 <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
                     <thead>
                     <tr>
-                        	<th>RNO</th>
+                        	<th>번호</th>
 	                        <th>공고제목</th>
 	                        <th>회사명</th>
-	                        <th>Career</th>
-	                        <th>prefer</th>
+	                        <th>경력</th>
+	                        <th>우대사항</th>
                     </tr>
                     </thead>
                     
@@ -64,7 +64,7 @@
                      </c:forEach>  
                     </tbody> 
                </table>
-               <button id='registerBtn'>register</button>
+               <button class="btn btn-default" id='registerBtn'>등록</button>
                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                      <ul class="pagination">
                    
@@ -169,7 +169,7 @@
           str+= "<li class='paginate_button'><a href="+ (parseInt(pageResult.first) -1)+">Prev</a></li>";
        }
        for(var start = pageResult.first; start <= pageResult.last; start++) {
-          str+= "<li class='paginate_button"+(pageResult.page == start?"active":"")+"'><a href="+start+">"+start+"</a></li>";
+          str+= "<li class='paginate_button"+(pageResult.page == start?" active":"")+"'><a href="+start+">"+start+"</a></li>";
        }
        if(pageResult.next) {
           str+= "<li class='paginate_button'><a href="+ (parseInt(pageResult.last)+1)+">Next</a></li>";

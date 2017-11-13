@@ -20,15 +20,15 @@
 				  <h3>회원가입</h3><br>					
 						<form action="/job/member/signUpPost" method="post">
 							<label>이름</label>
-							<input type="text" placeholder="이름" class="form-control"	name="mname">
+							<input type="text" placeholder="이름" class="form-control"	name="mname" required>
 							<label>이메일</label>
-							<input type="email" placeholder="이메일" class="form-control" name="email"  id="email">
+							<input type="email" placeholder="이메일" class="form-control" name="email"  id="email" required>
 							<label>비밀번호</label>
-							<input type="password" placeholder="비밀번호" class="form-control" name="password" >
+							<input type="password" placeholder="비밀번호" class="form-control" name="password" required>
 							<label>비밀번호 확인</label>
-							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk">
+							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" required>
 							<label>휴대폰 번호</label>
-							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo">
+							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" required>
 							<div>
 								<label> <input type="radio" name="category" value="0" checked="checked">
 									개인회원

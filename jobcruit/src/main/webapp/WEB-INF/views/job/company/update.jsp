@@ -113,8 +113,8 @@
 					</div>
 				</div>
 				<button type="button" class="btn btn-default listBtn" id="mapBtn">지도에서 찾기</button>
-				<button type="submit" class="btn btn-default saveBtn">Save</button>
-				<button type="button" class="btn btn-default delBtn">Delete</button>
+				<button type="submit" class="btn btn-default saveBtn">저장</button>
+				<button type="button" class="btn btn-default delBtn">삭제</button>
 				<br> <br>
 				<input type="hidden" name="cid" value="${company.cid}">
 				<input type="hidden" name="mno" value="${company.mno}">

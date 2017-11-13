@@ -39,22 +39,8 @@
 	<div class="col-lg-6">
    	 <div class="box dark">
         <header>
-            <div class="icons"><i class="fa fa-edit"></i></div>
-            <h5>Input Text Fields</h5>
-            <!-- .toolbar -->
-            <div class="toolbar">
-              <nav style="padding: 8px;">
-                  <a href="javascript:;" class="btn btn-default btn-xs collapse-box">
-                      <i class="fa fa-minus"></i>
-                  </a>
-                  <a href="javascript:;" class="btn btn-default btn-xs full-box">
-                      <i class="fa fa-expand"></i>
-                  </a>
-                  <a href="javascript:;" class="btn btn-danger btn-xs close-box">
-                      <i class="fa fa-times"></i>
-                  </a>
-              </nav>
-            </div>            <!-- /.toolbar -->
+            <div class="icons"><i class="glyphicon glyphicon-edit"></i></div>
+            <h5>채용 공고 등록</h5>
         </header>
         <div id="div-1" class="body collapse in" aria-expanded="true" style="">
             <form class="form-horizontal" method="post">
@@ -117,7 +103,8 @@
                     oninvalid="this.setCustomValidity('검색키워드를 입력해주세요')" oninput="setCustomValidity('')">
                         
                 <!-- /.form-group -->
-               <button id="sendBtn" >저장하기</button>
+                <br />
+               <button class="btn btn-default" id="sendBtn" >저장하기</button>
             </form>
             
           <!--   <form method="post" enctype="multipart/form-data" target="zero">

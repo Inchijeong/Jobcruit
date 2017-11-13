@@ -21,9 +21,9 @@
 						<form action="/job/member/editPassword" method="post">
 <!-- 							<p class="text-muted text-center">비밀번호를 다시 설정해 주세요</p><br> -->
 							<label>비밀번호</label>
-							<input type="password" placeholder="비밀번호" class="form-control" name="password">
+							<input type="password" placeholder="비밀번호" class="form-control" name="password" required>
 							<label>비밀번호 확인</label>
-							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk"><br>
+							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" required><br>
 							<input type="hidden" id="mno" name="mno">
 							<button class="btn btn-lg btn-primary btn-block" type="submit">확인</button>
 						</form>

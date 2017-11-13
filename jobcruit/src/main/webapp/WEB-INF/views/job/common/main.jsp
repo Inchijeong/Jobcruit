@@ -23,8 +23,8 @@
    <c:forEach items='${list}' var='recruit'>
     <div class="col-sm-4">
       <div class="thumbnail">
-        <img src='/job/common/display?name=${recruit.cid}.png' alt="Paris" width="400" height="200">
-        <a href='/job/recruit/detail?rno=${recruit.rno}'><strong><h3>${recruit.title}</h3></strong></a><br>
+        <img src='/job/common/display?name=${recruit.cid}.png' alt="no Logo" width="400" height="200">
+        <a href='/job/recruit/detail?rno=${recruit.rno}' target="_blank"><strong><h3>${recruit.title}</h3></strong></a><br>
         <p>자격요건-${recruit.eligibility}</p>
         <p>우대사항-${recruit.prefer}</p>
       </div>

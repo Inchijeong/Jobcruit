@@ -31,7 +31,7 @@
 				<div class="icons">
 					<i class="fa fa-edit"></i>
 				</div>
-				<h5>Detail</h5>
+				<h5>기업 상세정보</h5>
 				<!-- .toolbar -->
 				<div class="toolbar">
 				</div>
@@ -115,8 +115,8 @@
 				</div>
 				<br> <br>
 				<button type="button" class="btn btn-default mapBtn" id="mapBtn">지도에서 위치보기</button>
-				<button type="button" class="btn btn-default modBtn">Modify n Delete</button>
-				<button type="button" class="btn btn-default listBtn">TO LIST</button>
+				<button type="button" class="btn btn-default modBtn">수정/삭제</button>
+				<button type="button" class="btn btn-default listBtn">목록</button>
 				<button type="button" class="btn btn-default reviewBtn">재직자 리뷰 보기</button>
 				<button type="button" class="btn btn-default recruitBtn">채용공고 등록하기</button>
 				

@@ -20,13 +20,13 @@
 						<h3>개인정보 수정</h3><br>
 						<form action="/job/member/editInfo" method="post">
 						  <label>이름</label>
-							<input type="text" placeholder="이름" class="form-control"	name="mname" id="mname">
+							<input type="text" placeholder="이름" class="form-control"	name="mname" id="mname" required>
 						  <label>비밀번호</label>
-							<input type="password" placeholder="비밀번호" class="form-control" name="password" id="password">
+							<input type="password" placeholder="비밀번호" class="form-control" name="password" id="password" required>
 						  <label>비밀번호 확인</label>
-							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" id="passwordChk">
+							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" id="passwordChk" required>
 						  <label>휴대폰 번호</label>
-							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" id="phoneNo"><br>
+							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" id="phoneNo" required><br>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">확인</button>
 						</form>
 					</div>

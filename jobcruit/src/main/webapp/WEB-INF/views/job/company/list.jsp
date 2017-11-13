@@ -21,7 +21,7 @@
 		<div class="box">
 			<header>
 				<div class="icons">
-					<i class="fa fa-table"></i>
+					<i class="glyphicon glyphicon-list"></i>
 				</div>
 				<h5>기업 관리</h5>
 			</header>
@@ -77,7 +77,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 
 	<form id="actionForm" action="/job/company/listAll" method="get">
 		<input type="hidden" name="page" value="${criteria.page}">

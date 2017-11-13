@@ -56,6 +56,26 @@
 		</interceptor>
 		
 		<interceptor>
+			<mapping path="/job/free/detail"/>
+			<beans:ref bean="CheckInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/job/free/register"/>
+			<beans:ref bean="CheckInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+      <mapping path="/job/recruit/register"/>
+      <beans:ref bean="CheckInterceptor"/>
+    </interceptor>
+    
+    <interceptor>
+      <mapping path="/job/recruit/edit"/>
+      <beans:ref bean="CheckInterceptor"/>
+    </interceptor>
+		
+		<interceptor>
 			<mapping path="/job/common/*"/>
 			<beans:ref bean="RememberInterceptor"/>
 		</interceptor>

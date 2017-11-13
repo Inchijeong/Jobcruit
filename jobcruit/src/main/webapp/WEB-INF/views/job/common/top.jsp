@@ -47,7 +47,7 @@
                             <!-- .nav -->
                             <ul class="nav navbar-nav">
                                 <li><a href="/job/recruit/list">채용정보</a></li>
-                                <li><a href="/job/company/list">기업정보</a></li>
+                                <li><a href="/job/company/listAll">기업정보</a></li>
                                 <li><a href="/job/free/list">자유게시판</a></li>
                                 <li><a href="/job/myPage/myPage">MyPage</a></li>
                             </ul>
