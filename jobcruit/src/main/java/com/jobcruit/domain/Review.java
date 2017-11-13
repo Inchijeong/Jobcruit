@@ -8,3 +8,4 @@ public class Review {
 	private Double grade;
 	private String title, merit, weakness;
 }
+ 
