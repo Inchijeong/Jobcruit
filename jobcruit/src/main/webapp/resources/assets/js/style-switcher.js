@@ -124,7 +124,7 @@ StyleSwitcher.prototype.build = function () {
         '</div>';
     $('body').append(modalHTML);
     var switchDiv = $('<div />').attr('id', 'style-switcher').addClass('style-switcher hidden-xs');
-    var h5Ai = $('<i />').addClass('fa fa-cogs fa-2x');
+    var h5Ai = $('<i />').addClass('glyphicon glyphicon-wrench');
     var h5A = $('<a />').attr({
         'href': '#',
         'id': 'switcher-link'

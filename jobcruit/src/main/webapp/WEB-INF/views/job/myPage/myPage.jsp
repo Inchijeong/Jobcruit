@@ -16,6 +16,9 @@
 			#content{
  				margin-bottom: 30px; 
 			}
+			.li-border{
+				border: 1px black solid;
+			}
 		</style>
 	</head>
 	<body class="menu-affix">
@@ -36,7 +39,7 @@
                           </li>
 <!--                           <li class="nav-divider"></li> -->
                           <li class="">
-                            <a href="">
+                            <a href="/job/myPage/myPage">
                               <i class="glyphicon glyphicon-star"></i><span class="link-title">&nbsp;관심 채용공고</span>
                             </a>
                           </li>
@@ -75,35 +78,102 @@
                       
 												<div class="row">
 												  <div class="col-lg-12">
-												        <div class="box">
-												            <header>
-												                <div class="icons"><i class="glyphicon glyphicon-list"></i></div>
-												                <h5>Dynamic Table</h5>
-												            </header>
-												            <div id="collapse4" class="body">
-												                <table id="dataTable" class="table table-bordered table-condensed table-hover table-striped">
-												                    <thead>
-												                    <tr>
-												                        <th>Rendering engine</th>
-												                        <th>Browser</th>
-												                        <th>Platform(s)</th>
-												                        <th>경력</th>
-												                        <th>우대 사항</th>
-												                    </tr>
-												                    </thead>
-												                    <tbody>
-												                            <tr>
-												                                <td>Trident</td>
-												                                <td>Internet Explorer 4.0</td>
-												                                <td>Win 95+</td>
-												                                <td>4</td>
-												                                <td>X</td>
-												                            </tr>
-												                    </tbody>
-												                </table>
-												            </div>
-												        </div>
-												    </div>
+												  	<h2>관심 채용 공고</h2>
+														<ul class="pricing-table">
+														
+															<li class="col-lg-3 li-border">
+																<h3>채용 제목</h3>
+																<div class="price-body">
+																	<div class="price">
+																		기업
+																	</div>
+																</div>
+																<div class="features">
+																	<ul>
+																		<li><strong>경력</strong> every month</li>
+																		<li><strong>학력</strong> every month</li>
+																		<li><strong>지원자격</strong> every month</li>
+																		<li><strong>우대사항</strong> every month</li>
+																		<li><strong>직급</strong> every month</li>
+																		<li><strong>하는 일</strong> every month</li>
+																		<li><strong>등록일</strong> every month</li>
+																	</ul>
+																</div>
+																<div class="footer">
+																	<a href="#" class="btn btn-info btn-rect">상세 페이지</a>
+																</div>
+															</li>
+															<li class="col-lg-3">
+																<h3>채용 제목</h3>
+																<div class="price-body">
+																	<div class="price">
+																		기업
+																	</div>
+																</div>
+																<div class="features">
+																	<ul>
+																		<li><strong>경력</strong> every month</li>
+																		<li><strong>학력</strong> every month</li>
+																		<li><strong>지원자격</strong> every month</li>
+																		<li><strong>우대사항</strong> every month</li>
+																		<li><strong>직급</strong> every month</li>
+																		<li><strong>하는 일</strong> every month</li>
+																		<li><strong>등록일</strong> every month</li>
+																	</ul>
+																</div>
+																<div class="footer">
+																	<a href="#" class="btn btn-info btn-rect">상세 페이지</a>
+																</div>
+															</li>
+															<li class="col-lg-3">
+																<h3>채용 제목</h3>
+																<div class="price-body">
+																	<div class="price">
+																		기업
+																	</div>
+																</div>
+																<div class="features">
+																	<ul>
+																		<li><strong>경력</strong> every month</li>
+																		<li><strong>학력</strong> every month</li>
+																		<li><strong>지원자격</strong> every month</li>
+																		<li><strong>우대사항</strong> every month</li>
+																		<li><strong>직급</strong> every month</li>
+																		<li><strong>하는 일</strong> every month</li>
+																		<li><strong>등록일</strong> every month</li>
+																	</ul>
+																</div>
+																<div class="footer">
+																	<a href="#" class="btn btn-info btn-rect">상세 페이지</a>
+																</div>
+															</li>
+															<li class="col-lg-3">
+																<h3>채용 제목</h3>
+																<div class="price-body">
+																	<div class="price">
+																		기업
+																	</div>
+																</div>
+																<div class="features">
+																	<ul>
+																		<li><strong>경력</strong> every month</li>
+																		<li><strong>학력</strong> every month</li>
+																		<li><strong>지원자격</strong> every month</li>
+																		<li><strong>우대사항</strong> every month</li>
+																		<li><strong>직급</strong> every month</li>
+																		<li><strong>하는 일</strong> every month</li>
+																		<li><strong>등록일</strong> every month</li>
+																	</ul>
+																</div>
+																<div class="footer">
+																	<a href="#" class="btn btn-info btn-rect">상세 페이지</a>
+																</div>
+															</li>
+															
+															<div class="clearfix"></div>
+														</ul>
+												  </div>
+												  <!-- /.col-lg-12 -->
 												</div>
 												<!-- /.row -->
 												
@@ -119,14 +189,13 @@
 		<script src="/resources/assets/lib/jquery/jquery.js"></script>
 		
 		<!-- sweetalert2 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.min.js"></script>
+<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.min.js"></script> -->
 		
 		<!-- url 파라미터 뺴오기 -->
-		<script src="/resources/assets/js/getParameters.js" type="text/javascript"></script>
+<!-- 		<script src="/resources/assets/js/getParameters.js" type="text/javascript"></script> -->
 		
 		<script>
 			$(document).ready(function(){
-				console.log(getParameters("editInfo"));
 				if (getParameters("editInfo")) {
 					swal(
 							  '성공',
@@ -134,6 +203,9 @@
 							  'success'
 							);
 				}
+				
+				
+				
 			});
 		</script>
 		

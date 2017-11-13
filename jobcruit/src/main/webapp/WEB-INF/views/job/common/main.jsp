@@ -25,10 +25,10 @@
 		<script src="/resources/assets/lib/jquery/jquery.js"></script>
 		
 		<!-- sweetalert2 -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.min.js"></script>
+<!-- 		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.5/sweetalert2.all.min.js"></script> -->
 		
 		<!-- url 파라미터 뺴오기 -->
-		<script src="/resources/assets/js/getParameters.js" type="text/javascript"></script>
+<!-- 		<script src="/resources/assets/js/getParameters.js" type="text/javascript"></script> -->
 		
 		<script>
 			$(document).ready(function(){

@@ -39,6 +39,9 @@
 	<beans:bean id="CheckInterceptor" class="com.jobcruit.interceptor.CheckInterceptor">
 	</beans:bean>
 	
+	<beans:bean id="RememberInterceptor" class="com.jobcruit.interceptor.RememberInterceptor">
+	</beans:bean>
+	
 	<interceptors>
 	
 		<interceptor>
@@ -46,20 +49,26 @@
 			<beans:ref bean="loginAfter"/>
 		</interceptor>
 		
+		<!-- 이 녀석을 걸면 로그인 안되어있으면 로그인창으로 보내버림 -->
 		<interceptor>
 			<mapping path="/job/myPage/*"/>
 			<beans:ref bean="CheckInterceptor"/>
 		</interceptor>
 		
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/job/common/*"/> -->
-<!-- 			<beans:ref bean="CheckInterceptor"/> -->
-<!-- 		</interceptor> -->
+		<interceptor>
+			<mapping path="/job/common/*"/>
+			<beans:ref bean="RememberInterceptor"/>
+		</interceptor>
 		
-<!-- 		<interceptor> -->
-<!-- 			<mapping path="/job/free/*"/> -->
-<!-- 			<beans:ref bean="CheckInterceptor"/> -->
-<!-- 		</interceptor> -->
+		<interceptor>
+			<mapping path="/job/free/*"/>
+			<beans:ref bean="RememberInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/job/recruit/*"/>
+			<beans:ref bean="RememberInterceptor"/>
+		</interceptor>
 		
 		
 	</interceptors>

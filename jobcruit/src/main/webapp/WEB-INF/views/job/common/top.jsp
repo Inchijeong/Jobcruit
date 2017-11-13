@@ -68,9 +68,9 @@
 		var $logoutView = $(".logoutView");
 		var $logonView = $(".logonView");
  		var login = "${login}";
-		console.log("세션" + login);
+// 		console.log("세션" + login);
  		var cookieMno = "${cookie.mnoCookie.value}";
-		console.log("쿠키" + cookieMno);
+// 		console.log("쿠키" + cookieMno);
 		var $loginName = $("#loginName");
 		
 		

@@ -31,7 +31,7 @@ public class CheckInterceptor extends HandlerInterceptorAdapter {
 			query = "?" + query;
 		}
 		
-		log.info(req.getMethod());
+//		log.info(req.getMethod());
 		
 		if (req.getMethod().equals("GET")) {
 			req.getSession().setAttribute("dest", uri + query);
@@ -43,30 +43,35 @@ public class CheckInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 	
-//		log.info("체크 인터셉터 걸림");
+		log.info("체크 인터셉터 걸림");
 		
 		Object value = request.getSession().getAttribute("login");
 		
 		if(value != null) {
+			log.info("세션에 있음");
 			return true;
 		}
 		
 		if(value == null) {
 		
+			log.info("세션에 없음");
 			Cookie loginCookie = WebUtils.getCookie(request, "mnoCookie");
 			
 			if(loginCookie != null) {
 				request.getSession().setAttribute("login", loginCookie.getValue());
+				log.info("세션 x 쿠키 o 로그인으로 가면안돼");
 				return true;
 			}
+			log.info("세션 쿠키 둘다 없음");
 			
 		}
 		
 		saveDest(request);
 		
 		response.sendRedirect("/job/member/login");
-//		log.info("사용자 정보없음 마페에서 로그인으로 이동");
+		
 		return false;
+		
 		
 	}
 	
