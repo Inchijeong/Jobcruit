@@ -89,7 +89,7 @@ public class CompanyController {
 	@GetMapping("/list")
 	public void list(HttpServletRequest request, Criteria cri, Model model) {
 		Object mno = request.getSession().getAttribute("login");
-		log.info("=====================================================================================================    "+mno);
+		log.info("=====================================================================================================    "+mno+cri);
 		model.addAttribute("list", service.getList(cri, (Integer) mno));
 		model.addAttribute("total", service.getListCount(cri));
 		log.info("========================================================list" + cri);

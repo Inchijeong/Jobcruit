@@ -17,6 +17,6 @@ public interface CompanyMapper extends CRUDMapper<Company, Long> {
 	public int getTotal(Criteria cri);
 	
 
-	@Select("select * from tb_company where mno=#{mno}")
-	public List<Company> getlist(Criteria cri, @Param(value="mno")Integer mno)
-;}
+	@Select("select * from tb_company where mno=#{mno} order by cid desc limit #{skip}, #{size}")
+	public List<Company> getlist( @Param(value="mno") Integer mno, @Param(value="size") Integer size, @Param(value="skip") Integer skip);
+}

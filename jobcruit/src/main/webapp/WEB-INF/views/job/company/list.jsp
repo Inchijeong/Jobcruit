@@ -79,13 +79,14 @@
 	</div>
 
 
-	<form id="actionForm" action="/job/company/listAll" method="get">
+	<form id="actionForm" action="/job/company/list" method="get">
 		<input type="hidden" name="page" value="${criteria.page}">
 		<input type="hidden" name="cid">
 		<input type="hidden" name="size" value="${criteria.size}">
 	</form>
 	<script src="/resources/assets/js/pagination.js"></script>
 	<script> 
+	
     $(document).ready(function() { 
     	  
     	var actionForm = $("#actionForm");

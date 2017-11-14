@@ -50,8 +50,10 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public List<Company> getList(Criteria cri, Integer mno) {
-		log.info("getList");
-		return mapper.getlist(cri, mno);
+		log.info("getList"+ cri );
+		Integer size = cri.getSize();
+		Integer skip = cri.getSkip();
+		return mapper.getlist(mno, size, skip);
 	}
 
 	@Override
