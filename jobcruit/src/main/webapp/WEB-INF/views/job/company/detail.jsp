@@ -125,7 +125,9 @@
 				<ul class="list-group">
 				</ul>
 					
-				<div id="logoImg"></div>
+				<div id="logoImg">
+				<img src="/resources/assets/img/${company.logo}" alt="로고 나오는 곳">
+				</div>
 				<div id="map" style="width: 100%; height: 350px;"></div>
 				</div>
 				<!-- /.form-group -->
@@ -174,7 +176,7 @@
 			});
 			
 // 			$("#logoBtn").click(function(event) {
-// 							var logoStr = "<img src='C:\zzz\upload"+$('#logo').val()+"' class='img-rounded'>";
+// 							var logoStr = "<img src='"+$('#logo').val()+"' class='img-rounded'>";
 							
 // 							$("#logoImg").html(logoStr);
 							
