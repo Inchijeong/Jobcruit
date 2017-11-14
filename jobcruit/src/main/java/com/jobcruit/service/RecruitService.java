@@ -2,6 +2,8 @@ package com.jobcruit.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.jobcruit.domain.HashTag;
 import com.jobcruit.domain.Recruit;
 import com.jobcruit.dto.Criteria;
@@ -20,8 +22,8 @@ public interface RecruitService {
 	
 	
 	/* 관심 채용 등록 및 삭제 */
-	public void registerHeart(Recruit recruit);
-	public void deleteHeart(Recruit recruit);
+	public void registerHeart(Integer rno, Integer mno);
+	public void deleteHeart(Integer rno, Integer mno);
 	
 //	기업 이름 땡겨오기
 	public String getCompName(Integer cid);

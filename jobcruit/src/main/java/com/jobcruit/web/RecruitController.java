@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 
 import org.imgscalr.Scalr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,14 +48,17 @@ public class RecruitController {
 	
 	@ResponseBody
 	@GetMapping("/heart")//model -> request setAttribute
-	public void registerHeart(Recruit recruit) {
-		service.registerHeart(recruit);
+	public void registerHeart(Recruit recruit, HttpServletRequest request) {
+		log.info("111111111"+request.getSession().getAttribute("login"));
+		Integer mno = (Integer) request.getSession().getAttribute("login");
+		service.registerHeart(recruit.getRno(), mno);
 	}
 	
 	@ResponseBody
 	@GetMapping("/heartCancel")//model -> request setAttribute
-	public void deleteHeart(Recruit recruit) {
-		service.deleteHeart(recruit);
+	public void deleteHeart(Recruit recruit, HttpServletRequest request) {
+		Integer mno = (Integer) request.getSession().getAttribute("login");
+		service.deleteHeart(recruit.getRno(), mno);
 	}
 	
 //	상세보기
@@ -102,9 +106,11 @@ public class RecruitController {
 //	키워드랑 채용공고 같이 등록하기.
 	@PostMapping("/register")
 	public String registerPost(HashTag hash, Recruit recruit, Criteria cri, RedirectAttributes rttr) {
+		
 		String keyword = hash.getKeyword();
 		String result = service.register(recruit, keyword);
 		rttr.addFlashAttribute("result", result );
+		
 		rttr.addFlashAttribute("criteria", cri);
 		
 		return "redirect:/job/recruit/list";

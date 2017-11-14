@@ -104,7 +104,7 @@
 						<label for="cname" class="control-label col-lg-4">주소</label>
 						<div class="col-lg-8">
 							<input type="text" name="address" id="address" placeholder="logo"
-								class="form-control"value="인창동 주공아파트 2단지">
+								class="form-control">
 						</div>
 					</div>
 					<button type="button" class="btn btn-default listBtn" id="mapBtn">지도에서 찾기</button>

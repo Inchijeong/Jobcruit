@@ -2,6 +2,8 @@ package com.jobcruit.mappers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -25,10 +27,10 @@ public interface RecruitMapper extends CRUDMapper<Recruit, Integer> {
 	public List<Recruit> searchList(SearchCriteria scri);
 	
 	/* 관심채용 등록 및 삭제 */
-	@Insert("insert  into tb_fav_recruit (rno, mno) values(#{rno},1)")
-	public void registerHeart(Recruit recruit);
-	@Delete("delete from tb_fav_recruit where rno=#{rno} and mno=1 ")
-	public void deleteHeart(Recruit recruit);
+	@Insert("insert  into tb_fav_recruit (rno, mno) values(#{rno},#{mno})")
+	public void registerHeart(@Param("rno")Integer rno, @Param("mno")Integer mno);
+	@Delete("delete from tb_fav_recruit where rno=#{rno} and mno=#{mno} ")
+	public void deleteHeart(@Param("rno")Integer rno, @Param("mno")Integer mno);
 	
 
 	

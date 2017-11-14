@@ -19,8 +19,8 @@
   <div class="col-lg-12">
         <div class="box">
             <header>
-                <div class="icons"><i class="fa fa-table"></i></div>
-                <h5>Dynamic Table</h5>
+                <div class="icons"><i class="glyphicon glyphicon-list"></i></div>
+                <h5>검색결과</h5>
             </header>
 
 
@@ -64,7 +64,7 @@
                      </c:forEach>  
                     </tbody> 
                </table>
-               <button id='registerBtn'>register</button>
+               <button class="btn btn-default" id='registerBtn'>등록</button>
                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                      <ul class="pagination">
                    

@@ -101,14 +101,14 @@ public class RecruitServiceImpl implements RecruitService {
 	}
 
 	@Override
-	public void registerHeart(Recruit recruit) {
-		mapper.registerHeart(recruit);
-		
-	}
+	public void registerHeart(Integer rno, Integer mno) {
+		mapper.registerHeart(rno,mno);
+	
+	} 
 
 	@Override
-	public void deleteHeart(Recruit recruit) {
-		mapper.deleteHeart(recruit);
+	public void deleteHeart(Integer rno, Integer mno) {
+		mapper.deleteHeart(rno,mno);
 		
 	}
 

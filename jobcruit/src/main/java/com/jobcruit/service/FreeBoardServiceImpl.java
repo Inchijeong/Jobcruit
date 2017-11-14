@@ -20,6 +20,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Autowired
 	private AttachMapper attachMapper;
 	
+	@Transactional
 	@Override
 	public void register(FreeBoard vo, String files[]) throws Exception {
 		mapper.create(vo);

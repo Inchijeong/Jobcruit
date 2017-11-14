@@ -64,7 +64,7 @@
                      </c:forEach>  
                     </tbody> 
                </table>
-               <button class="btn btn-default" id='registerBtn'>등록</button>
+               <!-- <button class="btn btn-default" id='registerBtn'>등록</button> -->
                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                      <ul class="pagination">
                    
@@ -144,7 +144,7 @@
     	   var rno = $(this).attr("href");
     	   
     	   //alert(rno);
-    	   window.open("http://localhost:8000/job/recruit/detail?rno="+rno);
+    	   window.open("/job/recruit/detail?rno="+rno);
     	   /* actionForm.find("input[name='rno']").val(rno);
     	   actionForm.attr("action", "/job/recruit/detail").submit(); */
        });
