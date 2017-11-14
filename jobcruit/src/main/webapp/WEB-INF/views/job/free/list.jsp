@@ -65,6 +65,7 @@
 															<th>작성자</th>
 															<th>작성일</th>
 															<th>조회수</th>
+															<th>첨부</th>
 														</tr>
 									        </thead>
 									        <tbody>
@@ -171,6 +172,11 @@
             str += "<td>"+ list[i].mname +"</td>";
             str += "<td>"+ getDateFormat(list[i].regDate,"-") +"</td>";
             str += "<td>"+ list[i].readCount +"</td>";
+            if(list[i].isAttach){
+	            str += "<td><span class='glyphicon glyphicon-paperclip'></span></td>";
+            }else{
+            	str += "<td>&nbsp;</td>";
+            }
             str += "</tr>";
 	        }
 	        $("#dataTable tbody").html(str);
