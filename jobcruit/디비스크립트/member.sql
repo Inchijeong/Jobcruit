@@ -1,6 +1,6 @@
 -- 회원 테이블 생성
 create table tb_member(
-  mno int auto_increment primary key,
+  mno int auto_increment primary key UNIQUE,
   email varchar(40) not null,
   mname varchar(30) not null,
   phone_no varchar(11) not null,

@@ -20,15 +20,15 @@
 				  <h3>회원가입</h3><br>					
 						<form action="/job/member/signUpPost" method="post">
 							<label>이름</label>
-							<input type="text" placeholder="이름" class="form-control"	name="mname" required>
+							<input type="text" placeholder="이름" class="form-control"	name="mname" id="mname" required>
 							<label>이메일</label>
-							<input type="email" placeholder="이메일" class="form-control" name="email"  id="email" required>
+							<input type="email" placeholder="이메일" class="form-control" name="email" id="email" required>
 							<label>비밀번호</label>
-							<input type="password" placeholder="비밀번호" class="form-control" name="password" required>
+							<input type="password" placeholder="비밀번호" class="form-control" name="password" id="password" required>
 							<label>비밀번호 확인</label>
-							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" required>
+							<input type="password" placeholder="비밀번호 확인" class="form-control" name="passwordChk" id="passwordChk" required>
 							<label>휴대폰 번호</label>
-							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" required>
+							<input type="text" placeholder="휴대폰 번호" class="form-control" name="phoneNo" id="phoneNo" required>
 							<div>
 								<label> <input type="radio" name="category" value="0" checked="checked">
 									개인회원
@@ -42,7 +42,7 @@
 							</div>
 							<br>
 							
-							<button class="btn btn-lg btn-success btn-block" type="submit">회원가입</button>
+							<button class="btn btn-lg btn-success btn-block" id="signUpBtn" type="submit">회원가입</button>
 						</form>
 					</div>
 				</div>
@@ -69,8 +69,11 @@
 	<script>
 		$(document).ready(function(){
 			var $email = $("#email");
+			var $password = $("#password");
+			var $passwordChk = $("#passwordChk");
+			var $phoneNo = $("#phoneNo");
 			var $result = $("#result");
-			
+			var $signUpBtn = $("#signUpBtn");
 			
 			$email.blur(function(){
 				$.ajax({
@@ -78,15 +81,37 @@
 					type: "post",
 					data: "email=" + $email.val()
 				}).done(function(result){
-					console.log(result);
 					if(result == 1){
-						$result.html("<span>이미 사용중이거나 탈퇴한 아이디입니다.</span>");
+						$result.html("<p>이미 사용중이거나 탈퇴한 아이디입니다.</p>");
+						$signUpBtn.attr('type', "button");
 					}else{
 						$result.html("");
+						$signUpBtn.attr('type', "submit");
 					}
-					
 				});
 			});
+			
+			$passwordChk.blur(function(){
+				if ($password.val() !== $passwordChk.val()){
+					$signUpBtn.attr('type', "button");
+					$result.html("<p>비밀번호와 비밀번호 확인은 같아야 합니다.</p>");
+				}else{
+					$result.html("");
+					$signUpBtn.attr('type', "submit");
+				}
+			});
+			
+			$phoneNo.blur(function(){
+				var phoneLen = $phoneNo.val().length;
+				if(phoneLen < 10 || phoneLen > 11){
+					$signUpBtn.attr('type', "button");
+					$result.html("<p>휴대폰 번호는 10~11 자리로 입력해 주세요.</p>");					
+				}else{
+					$result.html("");
+					$signUpBtn.attr('type', "submit");
+				}				
+			});
+			
 		});
 	</script>
 			

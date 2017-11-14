@@ -45,11 +45,11 @@
 	                              <i class="glyphicon glyphicon-star"></i><span class="link-title">&nbsp;관심 채용공고</span>
 	                            </a>
 	                          </li>
-	                          <li class="">
-	                            <a href="">
+	                          <!-- <li class="">
+	                            <a href="" class="">
 	                              <i class="glyphicon glyphicon-paperclip"></i><span class="link-title">&nbsp;이력서 관리</span>
 	                            </a>
-	                          </li>
+	                          </li> -->
 	                          <li class="">
 	                            <a href="/job/member/checkPassword">
 	                             	<i class="glyphicon glyphicon-user"></i><span class="link-title">&nbsp;회원정보 관리</span>
