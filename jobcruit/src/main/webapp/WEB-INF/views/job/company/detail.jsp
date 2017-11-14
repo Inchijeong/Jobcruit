@@ -31,7 +31,7 @@
 				<div class="icons">
 					<i class="fa fa-edit"></i>
 				</div>
-				<h5>기업 상세정보</h5>
+				<h5>Detail</h5>
 				<!-- .toolbar -->
 				<div class="toolbar">
 				</div>
@@ -115,8 +115,9 @@
 				</div>
 				<br> <br>
 				<button type="button" class="btn btn-default mapBtn" id="mapBtn">지도에서 위치보기</button>
+				<button type="button" class="btn btn-default logoBtn" id="logoBtn">로고 보기</button>
 				<button type="button" class="btn btn-default modBtn">수정/삭제</button>
-				<button type="button" class="btn btn-default listBtn">목록</button>
+				<button type="button" class="btn btn-default listBtn">목록으로</button>
 				<button type="button" class="btn btn-default reviewBtn">재직자 리뷰 보기</button>
 				<button type="button" class="btn btn-default recruitBtn">채용공고 등록하기</button>
 				
@@ -124,6 +125,7 @@
 				<ul class="list-group">
 				</ul>
 					
+				<div id="logoImg"></div>
 				<div id="map" style="width: 100%; height: 350px;"></div>
 				</div>
 				<!-- /.form-group -->
@@ -150,10 +152,13 @@
 	
 	<script>
 		$(document).ready(function() {
+		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 			var actionForm = $("#actionForm");
 			var actionForm2 = $("#actionForm2");
+			var actionForm3 = $("#actionForm3");
 			
+
 
 			$(".modBtn").click(function(event) {
 				console.log("============================"+ $("#cid").val());
@@ -167,6 +172,13 @@
 			$(".listBtn").click(function(event) {
 				actionForm.submit();
 			});
+			
+// 			$("#logoBtn").click(function(event) {
+// 							var logoStr = "<img src='C:\zzz\upload"+$('#logo').val()+"' class='img-rounded'>";
+							
+// 							$("#logoImg").html(logoStr);
+							
+// 						});
 
 			$(".reviewBtn").click(function(event) {
 				console.log("======================================================== reveiw btn clicked");
@@ -206,9 +218,6 @@
 				showMap();
 			});
 
-			/* function getList() {
-				$.getJSON
-			} */
 			function showMap() {
 				var infowindow = new daum.maps.InfoWindow({
 					zIndex : 1
@@ -219,7 +228,7 @@
 					center : new daum.maps.LatLng(37.566826,126.9786567), // 지도의 중심좌표
 					level : 3
 				// 지도의 확대 레벨
-				};
+				};	
 
 				// 지도를 생성합니다    
 				var map = new daum.maps.Map(mapContainer,mapOption);
@@ -273,5 +282,6 @@
 	<!-- /#wrap -->
 	<%@include file="../common/footer.jsp"%>
 	<%@include file="../common/bodyRes.jsp"%>
+
 </body>
 </html>
