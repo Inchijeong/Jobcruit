@@ -1,5 +1,6 @@
 package com.jobcruit.web;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -55,9 +56,10 @@ public class FreeBoardController {
 	}
 	
 	@PostMapping("/register")
-	public String registerPost(FreeBoard free, RedirectAttributes rttr) {
+	public String registerPost(FreeBoard free, String[] files, RedirectAttributes rttr) {
 		try {
-			service.register(free);
+			if(files != null) free.setIsAttach(1);
+			service.register(free, files);
 			rttr.addFlashAttribute("result", "success");
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -69,7 +71,11 @@ public class FreeBoardController {
 	@GetMapping("/detail")
 	public void detail(int fno, Model model) {
 		try {
-			model.addAttribute("free", service.detail(fno));
+			FreeBoard free = service.detail(fno);
+			model.addAttribute("free", free);
+			if(free.getIsAttach() == 1) {
+				model.addAttribute("attach", service.getAttach(fno));
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 			model.addAttribute("free", null);

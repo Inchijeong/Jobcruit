@@ -58,8 +58,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		Object dest = session.getAttribute("dest");
-//		log.info("---------------------dest:" + dest);
-		response.sendRedirect(dest != null? (String)dest : "/job/common/main");
+		log.info("---------------------dest:" + dest);
+		boolean isDisplay = dest.toString().contains("/display");
+		response.sendRedirect(dest != null && !isDisplay? (String)dest : "/job/common/main");
 		
 	}
 

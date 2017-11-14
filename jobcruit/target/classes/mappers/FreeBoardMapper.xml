@@ -16,16 +16,12 @@
 		<result column="mname" property="mname" />
 	</resultMap>
 	
-	<resultMap type="FreeAttach" id="FreeAttachMap">
-		<result column="free_ano" property="freeAno" />
-		<result column="fno" property="fno" />
-		<result column="file_path" property="filePath" />
-		<result column="file_name" property="fileName" />
-	</resultMap>
-	
 	<insert id="create">
-		insert into tb_freeboard (mno, title, content)
-		values (#{mno}, #{title}, #{content})
+		<selectKey resultType="Integer" keyProperty="fno" order="BEFORE">
+			select MAX(fno) + 1 from tb_freeboard
+	  </selectKey>  
+		insert into tb_freeboard (fno, mno, title, content, isattach)
+		values (#{fno}, #{mno}, #{title}, #{content}, ${isAttach})
 	</insert>
 	
 	<update id="update">

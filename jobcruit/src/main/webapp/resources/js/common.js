@@ -40,7 +40,21 @@ function showAlert(msg, type, isButton, time){
 		type:type,
 		showConfirmButton: isButton,
 		timer: time
-	}).then();
+	}).catch(function() {});
+}
+
+function showConfirm(msg, callback, param){
+	swal({
+		  title: msg,
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '예',
+		  cancelButtonText: '아니오'
+		}).then(function () {
+			callback(param);
+		}, function(){});
 }
 
 var getParameters = function (paramName) {

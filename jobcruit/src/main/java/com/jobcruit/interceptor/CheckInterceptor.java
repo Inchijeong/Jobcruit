@@ -31,8 +31,7 @@ public class CheckInterceptor extends HandlerInterceptorAdapter {
 			query = "?" + query;
 		}
 		
-//		log.info(req.getMethod());
-		
+//		log.info("getMethod : " + req.getMethod());
 		if (req.getMethod().equals("GET")) {
 			req.getSession().setAttribute("dest", uri + query);
 		}

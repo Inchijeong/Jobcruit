@@ -6,6 +6,5 @@ import lombok.Data;
 public class FreeAttach {
 	private Integer freeAno;
 	private Integer fno;
-	private String filePath;
 	private String fileName;
 }

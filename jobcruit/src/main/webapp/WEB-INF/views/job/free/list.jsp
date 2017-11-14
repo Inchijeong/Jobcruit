@@ -104,19 +104,9 @@
 				
 				var result = '${result}';
 				if(result == 'success'){
-					swal({
-					  title:'등록되었습니다',
-					  type:'success',
-					  showConfirmButton: false,
-					  timer: 1000
-					});
+					showAlert("등록되었습니다");
 				}else if(result == 'fail'){
-					swal({
-					  title:'등록중 오류가 발생하였습니다',
-					  type:'error',
-					  showConfirmButton: false,
-					  timer: 1000
-					});
+					showAlert("등록중 오류가 발생하였습니다","error");
 				}
 
 				makeURL();
@@ -127,7 +117,7 @@
 			var isSearch = false;
 			
 			function makeURL(pageNum){
-				console.log("makeURL");
+//				console.log("makeURL");
 				var listSize = $("#listSize option:selected").val();
 	    	var searchType = $(".searchType option:selected").val();
 	    	if(!pageNum){
@@ -158,7 +148,7 @@
         		keyword:keyword.trim() == ""? "":keyword
         	})
         .done(function(retData){
-        	console.log(retData);
+//        	console.log(retData);
         	var list = retData.list;
         	var listSize = retData.cri.size;
 	        var total = retData.total;
@@ -167,15 +157,17 @@
 	        var d = null;
 	        var month = 0;
 	        var date = 0;
+	        var commCount = "";
 	        
 	        for(let i=0, len = list.length; i< len; i++){
 	        	d = new Date(list[i].regDate);
 	        	month = d.getMonth()+1;
 	        	date = d.getDate();
+	        	commCount = list[i].commCount;
 	        	
 	        	str += "<tr>";
             str += "<td>"+ list[i].fno +"</td>";
-            str += "<td><a href='"+ list[i].fno +"' class='read'>"+ list[i].title +"</td>";
+            str += "<td><a href='"+ list[i].fno +"' class='read'>"+ list[i].title + (commCount > 0 ?"("+commCount+")":"") +"</td>";
             str += "<td>"+ list[i].mname +"</td>";
             str += "<td>"+ getDateFormat(list[i].regDate,"-") +"</td>";
             str += "<td>"+ list[i].readCount +"</td>";
@@ -188,9 +180,9 @@
 	    
 	    //페이징 표시
 	    function makePagination(pageNum, listSize, total){
-	    	console.log("page:"+pageNum+", size"+listSize+", total:"+total);
+//	    	console.log("page:"+pageNum+", size"+listSize+", total:"+total);
 	    	var pageResult = makePage({page:pageNum, size:listSize, total:total});
-				console.log(pageResult);
+//				console.log(pageResult);
 				
 			  var str = "";
 	    	if(pageResult.prev){
@@ -231,7 +223,7 @@
 	    		return false;
 	    	}
 	    	
-	    	console.log("keyword :" +$search.val());
+//	    	console.log("keyword :" +$search.val());
     		keyword = $search.val();
     		$search.val("");
     		
@@ -275,7 +267,7 @@
 
 	      var pageNum = $(this).attr("href");
 	      
-	      console.log("PAGE NUM : " + pageNum);
+//	      console.log("PAGE NUM : " + pageNum);
 	      setPushState(pageNum);
 	      makeURL(pageNum);
 	    });
@@ -295,7 +287,7 @@
 
 	    //뒤로가기 시 history에 넣어놓은 데이터를 꺼내서 이전 게시물 출력
 	    window.onpopstate = function(e){
-	        console.log(e);
+//	        console.log(e);
 	        
 	        $("#listSize").val(e.state.size).attr("selected","selected");
 	        
