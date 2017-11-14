@@ -54,7 +54,6 @@ public class AttachController {
 			FileCopyUtils.copy(mf.getInputStream(), out);
 			
 			if(mf.getContentType().startsWith("image")) {
-				//model.addAttribute("isImage", f1.getContentType().startsWith("image"));
 				model.addAttribute("isImage", true);
 				//thumbnail image 생성
 				//makeThumbnail(uploadName, mDir);
@@ -74,11 +73,7 @@ public class AttachController {
 	
 		BufferedImage destImg = null;
 		//img height가 width보다 크면 resize 옵션 다르게 처리해주기. 이대로 처리하면 사진이 회전함
-		if(sourceImg.getHeight() <= sourceImg.getWidth()) {
-			destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);	//height를 100으로 맞춰줌
-		} else {
-			destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);	//height를 100으로 맞춰줌
-		}
+		destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);	//height를 100으로 맞춰줌
 		String thumbnailName = uploadPath + File.separator +"s_"+ fileName;	//s_는 썸네일 구분용. 없으면 일반 파일.
 	  
 		File newFile = new File(thumbnailName);
@@ -123,7 +118,6 @@ public class AttachController {
 			IOUtils.copy(in, bos);
 			headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
 	        headers.add("Content-Disposition", "attachment; filename=\""+
-	        	//new String(fileName.getBytes(), "ISO-8859-1")+"\"");
 	          new String(fileName.getBytes("UTF-8"), "ISO-8859-1")+"\"");
 			
 	        result = new ResponseEntity<byte[]>(bos.toByteArray(), headers, HttpStatus.OK);

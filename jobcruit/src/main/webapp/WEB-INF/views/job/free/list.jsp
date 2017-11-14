@@ -102,7 +102,6 @@
 		
 		<script>
 			$(document).ready(function(){
-				
 				var result = '${result}';
 				if(result == 'success'){
 					showAlert("등록되었습니다");
@@ -118,7 +117,6 @@
 			var isSearch = false;
 			
 			function makeURL(pageNum){
-//				console.log("makeURL");
 				var listSize = $("#listSize option:selected").val();
 	    	var searchType = $(".searchType option:selected").val();
 	    	if(!pageNum){
@@ -149,7 +147,6 @@
         		keyword:keyword.trim() == ""? "":keyword
         	})
         .done(function(retData){
-//        	console.log(retData);
         	var list = retData.list;
         	var listSize = retData.cri.size;
 	        var total = retData.total;
@@ -186,9 +183,7 @@
 	    
 	    //페이징 표시
 	    function makePagination(pageNum, listSize, total){
-//	    	console.log("page:"+pageNum+", size"+listSize+", total:"+total);
 	    	var pageResult = makePage({page:pageNum, size:listSize, total:total});
-//				console.log(pageResult);
 				
 			  var str = "";
 	    	if(pageResult.prev){
@@ -229,7 +224,6 @@
 	    		return false;
 	    	}
 	    	
-//	    	console.log("keyword :" +$search.val());
     		keyword = $search.val();
     		$search.val("");
     		
@@ -272,8 +266,6 @@
 	      e.preventDefault();
 
 	      var pageNum = $(this).attr("href");
-	      
-//	      console.log("PAGE NUM : " + pageNum);
 	      setPushState(pageNum);
 	      makeURL(pageNum);
 	    });
@@ -293,8 +285,6 @@
 
 	    //뒤로가기 시 history에 넣어놓은 데이터를 꺼내서 이전 게시물 출력
 	    window.onpopstate = function(e){
-//	        console.log(e);
-	        
 	        $("#listSize").val(e.state.size).attr("selected","selected");
 	        
 	        if(e.state.skey){

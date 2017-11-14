@@ -15,11 +15,6 @@ public class FreeCommentServiceImpl implements FreeCommentService {
 	@Autowired
 	private FreeCommentMapper mapper;
 	
-	/*@Override
-	public void register(FreeComment vo) throws Exception {
-		mapper.create(vo);
-	}*/
-	
 	@Transactional
 	@Override
 	public void register(FreeComment vo) throws Exception {
@@ -37,7 +32,8 @@ public class FreeCommentServiceImpl implements FreeCommentService {
 	public void modify(FreeComment vo) throws Exception {
 		mapper.update(vo);
 	}
-
+	
+	@Transactional
 	@Override
 	public void remove(Integer key) throws Exception {
 		mapper.minusCommentCount(key);

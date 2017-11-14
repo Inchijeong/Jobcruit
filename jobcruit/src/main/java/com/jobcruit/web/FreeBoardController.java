@@ -1,8 +1,6 @@
 package com.jobcruit.web;
 
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jobcruit.domain.FreeBoard;
-import com.jobcruit.dto.Criteria;
 import com.jobcruit.dto.SearchCriteria;
 import com.jobcruit.dto.SearchResult;
 import com.jobcruit.service.FreeBoardService;

@@ -133,9 +133,6 @@
 		<%@include file="../common/bodyRes.jsp" %> 
 		
 		<script>
-		$(document).ready(function(){
-			//makeAttachList();
-		});
 		//===========================조회 화면==============================
 		$actionForm = $("#actionForm");
 		
@@ -160,19 +157,6 @@
 				getCommentList();
 			}
 		});
-		
-		function makeAttachList(){
-			var attList = '${attach}';
-			console.log(attList);
-			if(attList != ""){
-				var attStr = "";
-				for(var i = 0;i<attList.length;i++){
-					console.log(attList[i]);
-					attStr += '<li><div>'+attList[i].fileName.split("_")[1]+'<span class="glyphicon glyphicon-remove" data-src="'+attList[i].fileName+'"></span></div></li>';
-				}
-				$(".uploadList").html(attStr);
-			}
-		}
 		
 		$(".uploadList").on("click", "span", function(e){
 			e.stopPropagation();	//안전한 코딩을 위한...
