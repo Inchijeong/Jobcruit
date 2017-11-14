@@ -41,7 +41,7 @@
 						<label for="cname" class="control-label col-lg-4">기업명</label>
 						<div class="col-lg-8">
 							<input type="text" name="cname" id="text1" placeholder="name"
-								class="form-control" value="하이">
+								class="form-control">
 						</div>
 					</div>
 					<br>
@@ -50,7 +50,7 @@
 						<label for="cname" class="control-label col-lg-4">업종</label>
 						<div class="col-lg-8">
 							<input type="text" name="info1" id="info1" placeholder="info"
-								class="form-control" value="하이">
+								class="form-control">
 						</div>
 					</div>
 					<br>
@@ -59,7 +59,7 @@
 						<label for="cname" class="control-label col-lg-4">사원수</label>
 						<div class="col-lg-8">
 							<input type="text" name="info2" id="info2" placeholder="info"
-								class="form-control"value="하이">
+								class="form-control">
 						</div>
 					</div>
 					<br>
@@ -68,7 +68,7 @@
 						<label for="cname" class="control-label col-lg-4">설립연도</label>
 						<div class="col-lg-8">
 							<input type="text" name="info3" id="info3" placeholder="info"
-								class="form-control"value="하이">
+								class="form-control">
 						</div>
 					</div>
 					<br>
@@ -77,7 +77,7 @@
 						<label for="cname" class="control-label col-lg-4">기업 형태</label>
 						<div class="col-lg-8">
 							<input type="text" name="info4" id="info4" placeholder="info"
-								class="form-control"value="하이">
+								class="form-control">
 						</div>
 					</div>
 					<br>
@@ -86,7 +86,7 @@
 						<label for="cname" class="control-label col-lg-4">홈페이지</label>
 						<div class="col-lg-8">
 							<input type="text" name="homepage" id="homepage"
-								placeholder="www.example.com" class="form-control"value="하이">
+								placeholder="www.example.com" class="form-control">
 						</div>
 					</div>
 					<br>
@@ -109,8 +109,7 @@
 					</div>
 					<button type="button" class="btn btn-default listBtn" id="mapBtn">지도에서 찾기</button>
 				<button type="button" class="btn btn-default fileBtn">로고 업로드하기</button>
-				<button type="button" class="btn btn-default btn" id="btn" value="">value 확인</button>
-					<button type="submit" class="btn btn-default submitBtn">Submit Button</button>
+					<button type="submit" class="btn btn-default submitBtn">저장</button>
 					<br>
 					<br>
 					<!-- /.form-group -->
