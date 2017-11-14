@@ -99,8 +99,9 @@
 				<div class="form-group">
 					<label for="cname" class="control-label col-lg-4">로고</label>
 					<div class="col-lg-8">
-						<input type="text" name="logo" id="logo" placeholder="logo"
-							class="form-control" value="${company.logo}" readonly>
+<!-- 						<input type="text" name="logo" id="logo" placeholder="logo" -->
+<%-- 							class="form-control" value="${company.logo}" readonly> --%>
+				<img src="/resources/assets/img/${company.logo}" alt="로고 나오는 곳" width="200px" height="150px">
 					</div>
 				</div>
 				<br>
@@ -115,7 +116,6 @@
 				</div>
 				<br> <br>
 				<button type="button" class="btn btn-default mapBtn" id="mapBtn">지도에서 위치보기</button>
-				<button type="button" class="btn btn-default logoBtn" id="logoBtn">로고 보기</button>
 				<button type="button" class="btn btn-default modBtn">수정/삭제</button>
 				<button type="button" class="btn btn-default listBtn">목록으로</button>
 				<button type="button" class="btn btn-default reviewBtn">재직자 리뷰 보기</button>
@@ -126,7 +126,6 @@
 				</ul>
 					
 				<div id="logoImg">
-				<img src="/resources/assets/img/${company.logo}" alt="로고 나오는 곳">
 				</div>
 				<div id="map" style="width: 100%; height: 350px;"></div>
 				</div>
@@ -174,14 +173,7 @@
 			$(".listBtn").click(function(event) {
 				actionForm.submit();
 			});
-			
-// 			$("#logoBtn").click(function(event) {
-// 							var logoStr = "<img src='"+$('#logo').val()+"' class='img-rounded'>";
-							
-// 							$("#logoImg").html(logoStr);
-							
-// 						});
-
+		
 			$(".reviewBtn").click(function(event) {
 				console.log("======================================================== reveiw btn clicked");
 
