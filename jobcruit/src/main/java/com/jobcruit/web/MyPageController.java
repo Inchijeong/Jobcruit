@@ -28,6 +28,12 @@ public class MyPageController {
 		
 	}
 	
+	// 마이 페이지로 이동
+	@GetMapping("/cv")
+	public void cvGet() {
+		
+	}
+	
 	@ResponseBody
 	@GetMapping("/favList")
 	public List<Recruit> favListGet(Integer mno, Model model) {
