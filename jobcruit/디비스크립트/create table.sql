@@ -15,9 +15,8 @@ create table tb_freeboard(
 
 -- 자유게시판 첨부 테이블 생성
 create table tb_free_attach(
-	free_ano int auto_increment primary key,
-	fno int not null,
-  file_path varchar(200) not null,
+   free_ano int auto_increment primary key,
+   fno int not null,
   file_name varchar(100) not null
 );
 
@@ -81,7 +80,8 @@ CREATE TABLE tb_cv (
 -- 관심 채용 테이블 생성
 CREATE TABLE tb_fav_recruit (
 	mno INT NOT NULL,
-	rno INT NOT NULL
+	rno INT NOT NULL,
+  reg_date timestamp default now()
 );
  
 
@@ -95,7 +95,8 @@ create table tb_recruit(
 	career varchar(100) not null, 
 	edu_level varchar(50) not null, 
 	prefer varchar(500) not null, 
-	hire_type varchar(100) not null, 
+	hire_type varchar(100) not null,
+	eligibility varchar(500) not null,
 	recruit_info varchar(500) not null,
 	position varchar(30) not null
 );
