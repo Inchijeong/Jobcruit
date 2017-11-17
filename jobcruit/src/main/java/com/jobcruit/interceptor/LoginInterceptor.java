@@ -18,7 +18,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		log.info("로그인 인터셉터 들어옴");
+//		log.info("로그인 인터셉터 들어옴");
 		HttpSession session = request.getSession(); 
 		
 //		log.info("가져온 mno" + modelAndView.getModel().get("mno"));

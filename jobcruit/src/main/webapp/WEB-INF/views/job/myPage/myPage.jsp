@@ -26,52 +26,7 @@
 	<body class="menu-affix">
 		<div class="bg-dark dk" id="wrap">
 			<%@include file="../common/top.jsp" %> 
-		
-		
-		                    <div id="left">
-	                        <div class="media user-media bg-dark dker">
-	                            <div class="user-media-toggleHover">
-	                                <span class="glyphicon glyphicon-th-list"></span>
-	                            </div>
-	                        </div>
-                        
-	                        <!-- #menu -->
-	                        <ul id="menu" class="bg-blue dker">
-	                          <li class="nav-header">My Menu
-	                          </li>
-	<!--                           <li class="nav-divider"></li> -->
-	                          <li class="">
-	                            <a href="/job/myPage/myPage">
-	                              <i class="glyphicon glyphicon-star"></i><span class="link-title">&nbsp;관심 채용공고</span>
-	                            </a>
-	                          </li>
-	                          <!-- <li class="">
-	                            <a href="" class="">
-	                              <i class="glyphicon glyphicon-paperclip"></i><span class="link-title">&nbsp;이력서 관리</span>
-	                            </a>
-	                          </li> -->
-	                          <li class="">
-	                            <a href="/job/member/checkPassword">
-	                             	<i class="glyphicon glyphicon-user"></i><span class="link-title">&nbsp;회원정보 관리</span>
-	                             </a>
-	                          </li>
-	                          <li class="">
-	                            <a href="/job/company/list?mno=${login}">
-	                              <i class="glyphicon glyphicon-user"></i><span class="link-title">&nbsp;기업 등록</span>
-	                            </a>
-	                          </li>
-	                                  
-	                         </ul>
-	                        <!-- /#menu -->
-	                    	</div>
-	                      <div class="btn-group">
-                           <a data-placement="bottom" data-original-title="Show / Hide" data-toggle="tooltip"
-                              class="btn btn-primary btn-sm toggle-left" id="menu-toggle">
-                               <i class="glyphicon glyphicon-chevron-left"></i>
-                           </a>
-                        </div>
-                    		<!-- /#left -->
-                    
+			<%@include file="../common/siderbar.jsp" %> 
                     <div id="content">
                     <div class="outer">
                       <div class="inner bg-light lter">
@@ -80,32 +35,6 @@
 												  <div class="col-lg-12">
 												  	<h2>관심 채용 공고</h2>
 														<ul class="pricing-table">
-														
-															<!-- <li class="col-lg-3 li-border">
-																<h3 id="title">채용 제목</h3>
-																<div class="price-body">
-																	<div class="price"  id="">
-																		기업
-																	</div>
-																</div>
-																<div class="features">
-																	<ul id="favRecruit">
-																		<li id="career"><strong>경력</strong> every month</li>
-																		<li id="edu_level"><strong>학력</strong> every month</li>
-																		<li id="prefer"><strong>우대사항</strong> every month</li>
-																		<li id="eligibility"><strong>자격</strong> every month</li>
-																		<li id="dowhat"><strong>하는 일</strong> every month</li>
-																		<li id="hireType"><strong>정규직/계약직</strong> every month</li>
-																		<li id="position"><strong>직급</strong> every month</li>
-																		<li id="reg_date"><strong>등록일</strong> every month</li>
-																	</ul>
-																</div>
-																<div class="footer">
-																	<a href="#" class="btn btn-info btn-rect">상세 페이지</a>
-																	<a href="#" class="btn btn-metis-1 btn-rect">삭제</a>
-																</div>
-															</li> -->
-															
 															<div class="clearfix"></div>
 														</ul>
 												  </div>

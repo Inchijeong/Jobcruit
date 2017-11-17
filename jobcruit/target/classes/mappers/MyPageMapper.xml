@@ -20,11 +20,12 @@
 	
 	<select id="getFavList" resultMap="RecruitMap">
 		select fr.rno, fr.cid, fr.title, fr.career, fr.edu_level, fr.prefer, fr.eligibility, fr.dowhat, fr.hire_type, fr.position, fr.reg_date 
-		  from (select f.mno, r.* 
-		  				from tb_fav_recruit f
-						 inner join tb_recruit r
-		  				  on f.rno = r.rno
-						 where f.mno = #{mno}) fr;
+		from (select f.mno, r.rno, r.cid, r.title, r.career, r.edu_level, r.prefer, r.eligibility, r.dowhat, r.hire_type, r.position, f.reg_date
+		  from tb_fav_recruit f
+		 inner join tb_recruit r
+		    on f.rno = r.rno
+		 where f.mno = #{mno}) fr
+		 order by fr.reg_date desc;		 
 	</select>
 	
 </mapper>
