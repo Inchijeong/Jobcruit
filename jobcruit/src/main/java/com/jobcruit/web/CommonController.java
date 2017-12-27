@@ -31,7 +31,6 @@ public class CommonController {
 			//		리스트 뿌려주기.
 			model.addAttribute("list", service.getMainList());
 			log.info("11111111111111111"+service.getMainList());
-			
 	}
 	
 	@GetMapping(value="/display", produces="image/jpeg")

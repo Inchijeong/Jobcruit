@@ -59,6 +59,7 @@
 		$(document).ready(function(){
 			var $recoverBtn = $("#recoverBtn");
 			var $result = $("#result");
+			
 			$recoverBtn.click(function() {
 				$.ajax({
 					data: {

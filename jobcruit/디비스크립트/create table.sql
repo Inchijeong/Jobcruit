@@ -74,7 +74,7 @@ CREATE TABLE tb_cv (
   file_path VARCHAR(200) NOT NULL,
   file_name VARCHAR(100) NOT NULL,
   title VARCHAR(40) NOT NULL,
-  reg_date TIMESTAMP NOT NULL
+  reg_date TIMESTAMP default now()
   );
   
 -- 관심 채용 테이블 생성

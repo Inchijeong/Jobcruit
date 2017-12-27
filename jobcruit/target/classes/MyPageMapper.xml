@@ -16,7 +16,7 @@
 		<result column="eligibility" property="eligibility"/> 
 		<result column="dowhat" property="dowhat"/> 
 		<result column="reg_date" property="regDate"/> 
-	</resultMap> 
+	</resultMap> 	
 	
 	<select id="getFavList" resultMap="RecruitMap">
 		select fr.rno, fr.cid, fr.title, fr.career, fr.edu_level, fr.prefer, fr.eligibility, fr.dowhat, fr.hire_type, fr.position, fr.reg_date 
@@ -28,4 +28,25 @@
 		 order by fr.reg_date desc;		 
 	</select>
 	
+	
+	<resultMap id="CvMap" type="Cv">
+		<result column="cv_ano" property="cvAno"/>
+		<result column="mno" property="mno"/>
+		<result column="file_path" property="filePath"/>
+		<result column="file_name" property="fileName"/>
+		<result column="title" property="title"/>
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+	
+	<insert id="createCv">
+		insert into tb_cv(mno, file_path, file_name, title)
+		values(#{mno}, #{filePath}, #{fileName}, #{title})
+	</insert>
+	
+	<select id="readCvList" resultMap="CvMap">
+			select cv_ano, file_name, title, reg_date
+		  from tb_cv
+		  where mno = #{mno}
+		  order by reg_date desc
+	</select>
 </mapper>

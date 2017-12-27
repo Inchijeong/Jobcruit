@@ -3,6 +3,7 @@ package com.jobcruit.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jobcruit.domain.Cv;
 import com.jobcruit.domain.Member;
 import com.jobcruit.mappers.MemberMapper;
 
